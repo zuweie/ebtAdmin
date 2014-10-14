@@ -1,4 +1,0 @@
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE `test` (
-	`test_id` INT(11) COMMENT 'test id'
-)ENGINE=MyISAM DEFAULT CHARSET=utf8;
