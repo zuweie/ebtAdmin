@@ -1,0 +1,13 @@
+<ul class="MenuList" id="root_{$menu['id']}" >
+   	<!-- 第二级菜单 -->
+    <li class="treemenu">
+       <a id="root_{$menu['id']}" class="actuator" href="javascript:void(0)" onClick="switch_root_menu('{$menu['id']}');" hidefocus="true" style="outline:none;">{$menu['title']}</a>
+         <ul id="tree_{$menu['id']}" class="submenu">
+	          	<php>foreach($menu['submenu'] as $k => $v) {</php>
+			      <li>
+			      	<a id="menu_{$v['id']}" href="javascript:void(0)" onClick="switch_sub_menu('{$v['id']}', '{$v['url']}');" class="submenuA" hidefocus="true" style="outline:none;">{$v['title']}</a>
+			      </li>
+				<php>}</php>
+          </ul>
+	</li>
+</ul>

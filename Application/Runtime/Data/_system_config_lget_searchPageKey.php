@@ -1,0 +1,1 @@
+a:1:{s:46:"S_Admin_Public_pluginAgent_AppManager_dispApps";a:5:{s:3:"key";a:1:{s:8:"app_name";s:8:"app_name";}s:8:"key_name";a:1:{s:8:"app_name";s:14:"123412zxcvzxcv";}s:8:"key_type";a:1:{s:8:"app_name";s:4:"date";}s:9:"key_tishi";a:1:{s:8:"app_name";s:15:"diaallwelrjqlwe";}s:14:"key_javascript";a:1:{s:8:"app_name";s:0:"";}}}

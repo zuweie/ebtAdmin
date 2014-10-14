@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--  
+<link href="{:APPS_URL}/admin/_static/admin.css" rel="stylesheet" type="text/css">
+-->
+<link href="/Application/Admin/View/_static/css/admin.css" rel="stylesheet" type="text/css">
+
+<script>
+/**
+ * 全局变量
+ */
+var SITE_URL       = '{:SITE_URL}';
+var PUBLIC_STATIC  = '<php>echo PUBLIC_STATIC;</php>';
+var APPNAME        = '<php> echo MODULE_NAME;</php>';
+var UID            = '<php> echo $uid;</php>';
+var LANG           = new Array();
+</script>
+
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/jquery.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/core.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/module.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/common.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/module.common.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/module.weibo.js"></script>
+<script type="text/javascript" src="/Application/Admin/View/_static/js/admin.js?t=11"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/ui.core.js"></script>
+<script type="text/javascript" src="{:PUBLIC_STATIC}/js/ui.draggable.js"></script>
+
+<php>
+/* 非admin应用的后台js脚本统一写在  模板风格对应的app目录下的admin.js中*/
+if(MODULE_NAME != 'Admin' && file_exists('.'.MODULE_STATIC.'/js/admin.js')){
+</php>
+<script type="text/javascript" src="{:MODULE_STATIC}/js/admin.js"></script>
+<php>}</php>
+<php>if(!empty($langJsList)) {</php>
+<volist name="langJsList" id="vo">
+<script src="{$vo}"></script>
+</volist>
+<php>}</php>
+</head>
+<body>

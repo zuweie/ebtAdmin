@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><input name="<?php echo ($name); ?>" type="text" class="<?php echo ($class); ?>" id="<?php echo ($id); ?>" value='<?php echo ($value); ?>' onfocus="core.rcalendar(this,'<?php echo ($dtype); ?>');" readonly="readonly" style="width:200px;"/>
