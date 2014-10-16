@@ -28,6 +28,5 @@ ebtAdmin 是一个基于免费开源的，快速、简单的面向对象的 轻�
 
 * Administrator有两个关键的ACTION，分别为displayList()和displayConfig()，分别用于列表显示 和 字段修改，这个也是后台数据处理最常用到的方式。
 
- * 如何使用列表显示，diplayList.
 
 
