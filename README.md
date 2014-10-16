@@ -20,4 +20,11 @@ ebtAdmin 是一个基于免费开源的，快速、简单的面向对象的 轻�
   * 2 install.php。此文件主要调用install.sql内的sql脚本。使其生成用户想要数据表。具体写法请参照/Application/User/Appinfo/install.php.
   * 3 install.sql. 生成数据表的SQL脚本文件。具体写法请参照/Application/User/Appinfo/install.sql。
   * 4 uninstall.php 卸载数据表，具体写法请参照/Application/User/Appinfo/uninstall.php
+  
+
+#### 关于如何使用这个后台
+
+* 后台的主要框架类 Administrator，这个类可以继承，也可以单独使用。它位置在/Application/Admin/Controller/AdministratorController.class.php
+
+* Administrator有两个关键的API，分别为displayList和displayConfig，分别用于 
 
