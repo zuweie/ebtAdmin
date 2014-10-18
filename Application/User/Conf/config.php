@@ -1,5 +1,6 @@
 <?php
 return array (
+	'access_ctrl' => true,
 	'access' => array('User/Login/login'=>1, 
 					   'User/Login/doLogin'=>1, 
 						'User/Login/logout'=>1),

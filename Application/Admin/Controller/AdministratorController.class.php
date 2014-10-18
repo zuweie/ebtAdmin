@@ -57,8 +57,10 @@ class AdministratorController extends MyController {
 	 *
 	 * @var string
 	 */
-	protected $savePostUrl = '';
-
+	
+	//protected $savePostUrl = '';
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $savePostUrl = '';
 	/**
 	 * 搜索提交地址
 	 *
@@ -67,6 +69,7 @@ class AdministratorController extends MyController {
 	//protected $searchPostUrl = '';
 	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
 	public $searchPostUrl = '';
+	
 	/**
 	 * 页面配置保存页面
 	 * @var string
@@ -92,8 +95,10 @@ class AdministratorController extends MyController {
 	 * 例子 : $this->pageTab[] = array('title'=>'邀请列表','tabHash'=>'list','url'=>U('admin/Home/invatecount'));
 	 * @var array
 	 */
-	protected $pageTab = array();
-
+	//protected $pageTab = array();
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $pageTab = array();
+	
 	/**
 	 * 列表页在分页栏的按钮
 	 * 例子：$this->pageButton[] = array('title'=>'搜索','onclick'=>"admin.fold('search_form')");
@@ -108,36 +113,47 @@ class AdministratorController extends MyController {
 	 *
 	 * @var bool
 	*/
-	protected $allSelected = true;
-
+	//protected $allSelected = true;
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $allSelected = true;
 	/**
 	 * 列表中的主键字段
 	 *
 	 * @var unknown_type
 	 */
-	protected $_listpk = 'id';
+	//protected $_listpk = 'id';
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $_listpk = 'id';
 	
 	/**
 	 * 页面载入时需要执行的JS列表 （直接函数名）
 	 * 如：$onload[] = "admin.test()";
 	 *
 	 */
-	protected $onload = array();
-
+	//protected $onload = array();
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $onload = array();
+	
 	/**
 	 * 提交时候需要进行的验证js函数
 	*/
-	protected $onsubmit = '';
-
+	//protected $onsubmit = '';
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $onsubmit = '';
+	
 	/**
 	 * 不能为空的字段
 	 */
-	protected $notEmpty = array();
-
+	//protected $notEmpty = array();
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $notEmpty = array();
+	
 	protected $navList = array();
 
-	protected $submitAlias = '保存';
-
+	//protected $submitAlias = '保存';
+	//把这个属性改为public，AdministratorController能够单独使用，而不需要继承使用。
+	public $submitAlias = '保存';
+	
 	public function _initialize()
 	{
 		// check login

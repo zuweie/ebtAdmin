@@ -1,6 +1,8 @@
 <?php
 return array(
 	/* 1 means you can access it do not need login */
+	'access_ctrl' => true,
+	
 	'access' => array(
 			'Admin/Install/install' => 1,
 			'Admin/Install/doInstall' => 1
