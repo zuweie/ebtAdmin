@@ -2,6 +2,7 @@
 return array (
 	'install_app_success' => '应用安装成功!',
 	'err_install_app_fail' => '应用安装失败!',
+	'err_app_write_prvilege' => '没有权限安装或卸载应用',
 	'msg_uninstall_app_success' => '卸载成功',
 	'err_uninstall_app_fail' => '卸载失败',
 	'msg_no_installed_apps' => '没有安装任何APP',

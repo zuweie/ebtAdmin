@@ -65,6 +65,12 @@ class AppManagerWidget extends AdminBaseWidget {
 	
 	public function doInstallApp(){
 		$name = I('get.name', null);
+		$usr_privilege = get_login_privilege();
+		
+		if (!verify_static_privilege($usr_privilege, array('app'=>0x2))){
+			$this->error(L('err_app_write_prvilege'));
+		}
+		
 		if(isset($name) && !is_app_installed($name)){
 			$res = install_app($name);
 			$res = regist_app($name);
@@ -78,9 +84,18 @@ class AppManagerWidget extends AdminBaseWidget {
 	
 	public function doUnInstallApp(){
 		$name = I('get.name', null);
+		
+		$usr_privilege = get_login_privilege();
+		
+		if (!verify_static_privilege($usr_privilege, array('app'=>0x3))){
+			$this->error(L('err_app_write_prvilege'));
+		}
+		
 		if (isset($name) && is_app_installed($name)){
-			$res = uninstall_app($name);
+			
 			$res = unregist_app($name);
+			uninstall_app($name);
+			
 			
 			if ($res){
 				$this->success(L('msg_uninstall_app_success'), U('Admin/Public/pluginAgent', array('plugin'=>'AppManager', 'act'=>'dispApps')));

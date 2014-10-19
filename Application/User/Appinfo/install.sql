@@ -51,5 +51,7 @@ CREATE TABLE `privilege` (
 	`privilege` TEXT DEFAULT NULL COMMENT 'privilege text'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT  INTO `privilege` VALUES ('1', 'ADMIN', 'admin:3');
+INSERT  INTO `privilege` VALUES ('1', 'ADMIN', 'admin:3;app:3;usr:3;privilege:3');
+INSERT  INTO `privilege` VALUES ('2', 'GUEST_ADMIN', 'admin:3;app:1;usr:1;privilege:1');
+
 
