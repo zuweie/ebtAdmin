@@ -47,7 +47,8 @@ var U =function(url,params){
 		url[1] = 'Index';
 	if (!url[2])
 		url[2] = 'index';
-	website = website+'?app='+url[0]+'&mod='+url[1]+'&act='+url[2];
+	website  = website+'?m='+url[0]+'&c='+url[1]+'&a='+url[2];
+	//website = website+'?app='+url[0]+'&mod='+url[1]+'&act='+url[2];
 	if(params){
 		params = params.join('&');
 		website = website + '&' + params;
@@ -59,6 +60,7 @@ function refresh() {
 	parent.MainIframe.location.reload();
 }
 
+/*
 function addTonav(name,url){
 	var appname = url.split('/');
 	$('.main_nav').append('<a href="#" onclick="gotoApp(this,\''+url+'\')" appname="'+appname[0]+'">'+name+'</a>');
@@ -73,6 +75,46 @@ function removeFromNav(app){
 		}
 	});
 }
+*/
+
+function onloadLeftMenu(obj){
+	$('.LeftMenu').empty();
+	var html = '<ul class="MenuList" id="root_'+obj.id+'">';
+	    html += '<li class="treemenu">';
+	    html += '<a id="root_'+obj.id+'" class="actuator" href="javascript:void(0);" onclick="switch_root_menu(\''+obj.id+'\');" hidefocus="true" style="outline:none;">'+obj.title+'</a>';
+	    html += '<ul id="tree_'+obj.id+'" class="submenu">';
+	    
+	    for(var i=0;i<obj.submenu.length;++i){
+	    	html += '<li>';
+	    	html += '<a id="menu_'+obj.submenu[i].id+'" href="javascript:void(0);" onclick="switch_sub_menu(\''+obj.submenu[i].id+'\', \''+obj.submenu[i].url+'\');" class="submenuA" hidefocus="true" style="outline:none;">'+obj.submenu[i].title+'</a>';
+	    	html += '</li>';
+	    }
+	    html += '</ul>';
+	    html += '</li>';
+	    html += '</ul>';
+	    
+	$('.LeftMenu').html(html);
+	  
+}
+
+function onLoadApp (obj, name, url){
+	
+	$('.main_nav').find('a').removeClass('on');
+
+	$(obj).addClass('on');
+
+	obj.className = 'on';
+	
+	var lefturl = U(name+'/Admin/leftMenu');
+	$.get(lefturl, function(data){
+		onloadLeftMenu(data);
+	}, 'json');
+	// disp the app index
+	//$('#MainIframe').location = url;
+	//MainIframe.location = url;
+	parent.MainIframe.location = url;
+}
+
 
 function gotoApp(obj,url){
 	
@@ -110,8 +152,8 @@ document.onkeydown=inactiveF5;
 		    	<div id="TopTime"></div>
 		    </div>
 		    <div class="main_nav">
-		    	<volist name="plugins" id="p">
-		    		<a id="channel_{$p['name']}" href="<php>echo U('Admin/Public/index', array('plugin'=>$p['name']))</php>" hidefocus="true" style="outline:none;">{$p['title']}</a>
+		    	<volist name="header" id="h">
+		    		<a id="channel_{$h['id']}" href="javascript:void(0);" onclick="onLoadApp(this,'{$h['name']}', '{$h['url']}')" hidefocus="true" style="outline:none;">{$h['title']}</a>
 		    	</volist>
 		    	
 		    	<!-- 
@@ -133,7 +175,8 @@ document.onkeydown=inactiveF5;
 	</td>
 
     <td>
-   	  <iframe onload="nof5()" id="MainIframe" name="MainIframe" scrolling="yes"  width="100%" height="100%" frameborder="0" noresize> </iframe>
+   	  <iframe onload="nof5()" id="MainIframe" name="MainIframe" scrolling="yes"  width="100%" height="100%" frameborder="0" noresize> 
+   	  </iframe>
 	</td>
   </tr>
 </table>

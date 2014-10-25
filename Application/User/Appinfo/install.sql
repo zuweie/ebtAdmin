@@ -23,7 +23,7 @@ CREATE TABLE `user` (
 
 DROP TABLE IF EXISTS `user_privilege`;
 CREATE TABLE `user_privilege` (
-	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
+	`up_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
 	`uid` INT(11) UNSIGNED NOT NULL COMMENT 'user id', 
 	`privilege` INT(11) UNSIGNED NOT NULL COMMENT 'privilege'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -33,13 +33,14 @@ CREATE TABLE `user_group` (
 	`gid` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'gid',
 	`title` VARCHAR(255) DEFAULT NULL COMMENT 'title',
 	`uid` INT(11) DEFAULT 0 COMMENT 'owner id',
+	`group_info` INT(11) DEFAULT 0 COMMENT 'group information',
 	`status` TINYINT(1) DEFAULT 0 COMMENT 'status',
 	`ctime` INT(11) COMMENT 'create time'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `group_privilege`;
 CREATE TABLE `group_privilege` (
-	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
+	`gp_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
 	`gid` INT(11) UNSIGNED NOT NULL COMMENT 'group id',
 	`privilege` INT(11) UNSIGNED NOT NULL COMMENT 'privilege' comment 'privielge'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;;
@@ -51,7 +52,7 @@ CREATE TABLE `privilege` (
 	`privilege` TEXT DEFAULT NULL COMMENT 'privilege text'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT  INTO `privilege` VALUES ('1', 'ADMIN', 'admin:3;app:3;usr:3;privilege:3');
+INSERT  INTO `privilege` VALUES ('1', 'ADMIN', 'admin:3;app:3;usr:3;privilege:3;sysapp:3');
 INSERT  INTO `privilege` VALUES ('2', 'GUEST_ADMIN', 'admin:3;app:1;usr:1;privilege:1');
 
 

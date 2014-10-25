@@ -11,10 +11,11 @@ return array(
 	'privilege_ctrl' => true,
 		
 	'privilege' => array(
-		'Admin/Public/*' => array('admin'=>0x3),
-	),
-		
-	'plugins' => array(
-		array('title'=>'应用','name'=>'AppManager'),
+		'Admin/Public/*' 		 	=> array('admin'=>0x3),
+		'Admin/Admin/installApp' 	=> array('app'=>0x2),
+		'Admin/Admin/unInstallApp' 	=> array('app'=>0x2),
+		'Admin/Admin/installSystemApp' 	 => array('sysapp'=>0x2),
+		'Admin/Admin/unInstallSystemApp' => array('sysapp'=>0x2),
+		'Admin/Admin/doEditAppInfo' 	 => array('app'=>0x2)
 	)
 );

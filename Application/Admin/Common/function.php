@@ -32,12 +32,24 @@ function regist_app($app_name) {
 			$data['app_name'] = $info['name'];
 		}
 			
+		if (isset($info['title'])){
+			$data['app_title'] = $info['title'];
+		}
+		
 		if (isset($info['author'])){
 			$data['app_author'] = $info['author'];
 		}
 			
 		if (isset($info['version'])){
 			$data['app_version'] = $info['version'];
+		}
+		
+		if (isset($info['type'])){
+			$data['app_type'] = $info['type']; 
+		}
+		
+		if (isset($info['admin_layout'])){
+			$data['app_admin_layout'] = $info['admin_layout']; 
 		}
 		
 		if (isset($info['desc'])){

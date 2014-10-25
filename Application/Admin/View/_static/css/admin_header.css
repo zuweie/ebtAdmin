@@ -33,7 +33,7 @@ a:active { color:#3b5999 }
 .LeftMenu { height: auto; margin-left:5px; text-align:left }
 .MenuList ul, .MenuList li { list-style-type: none; float:left; width:100% }
 .MenuList a { display: block; width: 100%; line-height: 32px; float:left }
-.submenu { display: none; }
+.submenu { /*display: none;*/ }
 .submenu li a { text-indent: 30px; }
 .submenu li { color: #FFFFFF; background-image: url(../resource/submenuA.gif); background-repeat: no-repeat; background-position: left bottom;}
 .submenuA { color: #FFFFFF; background-image: url(../resource/submenuA.gif); background-repeat: no-repeat; background-position: left bottom; }

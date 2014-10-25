@@ -13,6 +13,7 @@ class PrivilegeModel extends MyModel {
 		
 		foreach($listData['data'] as $k => $v){
 			$listData['data'][$k]['DOACTION'] = '<a href="'.U('User/Admin/editPrivilege', array('id'=>$v['pid'], 'tabHash'=>'editPrivilege')).'">'.L('ADMIN_EDIT').'</a>';
+			$listData['data'][$k]['DOACTION'] .= '|<a href="javascript:void(0);" onclick="user.delPrivilege('.$v['pid'].')">'.L('ADMIN_DEL').'</a>';
 		}
 		
 		return $listData;

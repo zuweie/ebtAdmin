@@ -34,3 +34,40 @@ user.del = function (id) {
 		);
 	}
 }
+
+user.delUserPrivilege = function (upid) {
+	if (confirm('确定要删除用户的这个权限?')){
+		$.post(U('User/Admin/delUserPrivilege'),
+				{upid:upid},
+				function (msg){
+					user.ajaxload(msg);
+				},
+				'json'
+		);
+	}
+}
+
+user.delGroupPrivilege = function (gpid) {
+	if (confirm('确定要删除用户组的这个权限?')){
+		$.post(U('User/Admin/delGroupPrivilege'),
+				{id:gpid},
+				function (msg){
+					user.ajaxload(msg);
+				},
+				'json'
+		);
+	}
+}
+
+user.delPrivilege = function (pid) {
+	if (confirm('确定要删除这个权限?')){
+		$.post(U('User/Admin/delPrivilege'),
+				{id:pid},
+				function (msg){
+					user.ajaxload(msg);
+				},
+				'json'
+		);
+	}
+}
+

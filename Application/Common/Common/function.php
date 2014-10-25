@@ -104,16 +104,21 @@ function verify_static_privilege($sample, $reagent, $mask_bit_size = 2){
 		$sample_value = intval($sample[$k]);
 		//样本权限值
 		$reagent_value = intval($v);
+
+		if(isset($sample_value)){
 			
-		for($i=0; $i<$mask_bit_size; ++$i){	
-			$mask = 0x1;
-			$mask = $mask << $i;
-			$reagent_bit_value = $reagent_value & $mask;
-			if ($reagent_bit_value !== 0){
-				if (($reagent_bit_value & $sample_value) === 0){
-					return false;
+			for($i=0; $i<$mask_bit_size; ++$i){	
+				$mask = 0x1;
+				$mask = $mask << $i;
+				$reagent_bit_value = $reagent_value & $mask;
+				if ($reagent_bit_value !== 0){
+					if (($reagent_bit_value & $sample_value) === 0){
+						return false;
+					}
 				}
 			}
+		}else {
+			return false;
 		}
 	}
 	

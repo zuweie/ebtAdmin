@@ -1,5 +1,8 @@
 <?php
 return array (
+	'menu_title' => '应用管理',
+	'submenu_title_uninstalledapp'=> '未安装应用',
+	'submenu_title_installedapp' => '已安装应用',
 	'install_app_success' => '应用安装成功!',
 	'err_install_app_fail' => '应用安装失败!',
 	'err_app_write_prvilege' => '没有权限安装或卸载应用',

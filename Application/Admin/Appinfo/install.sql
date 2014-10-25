@@ -12,8 +12,11 @@ DROP TABLE IF EXISTS `app`;
 CREATE TABLE `app` (
 	`app_id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'app id',
 	`app_name` VARCHAR(255) DEFAULT NULL COMMENT 'app name',
+	`app_title` VARCHAR(255) DEFAULT NULL COMMENT 'app title',
 	`app_author` VARCHAR(255) DEFAULT NULL COMMENT 'author',
 	`app_admin_entrance` VARCHAR(255) DEFAULT NULL COMMENT 'admin entrance',
+	`app_type` VARCHAR(128) DEFAULT NULL COMMENT 'app type',
+	`app_admin_layout` TINYINT (1) DEFAULT 1 COMMENT 'display on : 1 only on the AppManager submenu, 2 header , 3 both', 
 	`app_version` VARCHAR(255) DEFAULT NULL COMMENT 'version',
 	`app_desc` TEXT DEFAULT NULL COMMENT 'describe',
 	`ctime` INT(11) NOT NULL COMMENT 'create time'

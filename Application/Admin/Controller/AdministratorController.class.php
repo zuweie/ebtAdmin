@@ -160,10 +160,6 @@ class AdministratorController extends MyController {
 		
 		parent::_initialize();
 		
-		if(!is_login() && $this->_checkAdminPrivilege(get_login_privilege())){
-			redirect(U('User/Login/login'));
-		}
-		
 		// old code
 		//$this->systemdata_list = APP_NAME.'_'.MODULE_NAME;
 		$this->systemdata_list = MODULE_NAME.'_'.CONTROLLER_NAME;
@@ -593,8 +589,5 @@ class AdministratorController extends MyController {
 		
 		return file_put_contents ( $file, $content );
 	}
-	
-	private function _checkAdminPrivilege($privilege){
-		return true;
-	}
+
 }

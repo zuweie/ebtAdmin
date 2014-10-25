@@ -11,6 +11,6 @@ if (!empty($res)){
 	echo $res['error_code'];
 	echo '<br />';
 	echo $res['error_sql'];
-	include_once(APP_PATH.'/Admin/uninstall.php');
+	include_once(APP_PATH.'/Admin/Appinfo/uninstall.php');
 	exit;
 }
