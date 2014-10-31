@@ -16,6 +16,6 @@ return array(
 		'Admin/Admin/unInstallApp' 	=> array('app'=>0x2),
 		'Admin/Admin/installSystemApp' 	 => array('sysapp'=>0x2),
 		'Admin/Admin/unInstallSystemApp' => array('sysapp'=>0x2),
-		'Admin/Admin/doEditAppInfo' 	 => array('app'=>0x2)
+		'Admin/Admin/doEditAppInfo' 	 => array('sysapp'=>0x2)
 	)
 );

@@ -1,8 +1,18 @@
 <?php
 namespace Demo\Controller;
 use Admin\Controller\AdministratorController;
-
-class AdminController extends AdministratorController {
+use Admin\Controller\LeftMenuInterface;
+class AdminController extends AdministratorController 
+					   implements LeftMenuInterface{
+						
+	public function leftMenu() {
+		
+		$leftMenu['title'] = 'Demo';
+		$leftMenu['id']    = 'demo';
+		$leftMenu['submenu'][] = array('title'=>'Demo列表','id'=>'1', 'url'=>U('Demo/Admin/index'));
+		echo json_encode($leftMenu);
+		exit;
+	}
 	
 	public function index () {
 		
