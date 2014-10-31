@@ -1,7 +1,7 @@
 <?php
 namespace Widget\Widget;
-use Think\Controller;
+use Common\Controller\MyController;
 
-abstract class BaseWidget extends Controller {
+abstract class BaseWidget extends MyController {
 	abstract function render($data); 
 }

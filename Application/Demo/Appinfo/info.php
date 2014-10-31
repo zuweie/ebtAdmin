@@ -5,8 +5,7 @@ return array(
 		'author' 	=> 'zuweie',
 		'version' 	=> '0.1',
 		'type'      => 'app',
-		'admin_entrance'=> 'Demo/Admin/index',
+		'admin_entrance'=> U('Demo/Admin/index'),
 		'admin_layout' 	=> 1, 
-		'desc' 				=> 'this is Demo',
-		'title' 			=> 'Demo'
+		'desc' 			=> 'this is Demo'
 );

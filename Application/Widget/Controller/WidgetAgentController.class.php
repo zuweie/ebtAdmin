@@ -5,6 +5,8 @@ use Think\Controller;
 class WidgetAgentController extends Controller {
 	
 	public function agentWidget() {
-		return null;
+		$w = I('request.w');
+		$a = I('request.wa');
+		return widget($w,'', $a);
 	}
 }

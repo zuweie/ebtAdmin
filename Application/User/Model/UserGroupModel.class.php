@@ -20,4 +20,23 @@ class UserGroupModel extends MyModel {
 		
 		return $listData;
 	}
+	
+	public function getUserGroup ($fields=null, $map=array()){
+		if (isset($fields)){
+			$ugs = $this->field($fields)->where($map)->select();
+		}else {
+			$ugs = $this->where($map)->select();
+		}
+		
+		return $ugs;
+	} 
+	
+	public function getUserGroupKV($map=array()){
+		$ug = $this->getUserGroup('gid, title', $map);
+		$kv = array();
+		foreach ($ug as $g){
+			$kv[$g['gid']] = $g['title'];
+		}
+		return $kv;
+	}
 }

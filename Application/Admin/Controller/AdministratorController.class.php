@@ -169,20 +169,11 @@ class AdministratorController extends MyController {
 		//old code 
 		//$this->pageKey = APP_NAME.'_'.MODULE_NAME.'_'.ACTION_NAME;
 		$this->pageKey = MODULE_NAME.'_'.CONTROLLER_NAME.'_'.ACTION_NAME;
-		if (ACTION_NAME == 'pluginAgent'){
-			$plugin = I('get.plugin');
-			$act    = I('get.act');
-			$this->pageKey = $this->pageKey.'_'.$plugin.'_'.$act;
-		}
+
 		// old code
 		//$this->searchPageKey = 'S_'.APP_NAME.'_'.MODULE_NAME.'_'.ACTION_NAME;
 		$this->searchPageKey = 'S_'.MODULE_NAME.'_'.CONTROLLER_NAME.'_'.ACTION_NAME;
-		if(ACTION_NAME == 'pluginAgent'){
-			$plugin = I('get.plugin');
-			$act    = I('get.act');
-			$this->searchPageKey = $this->searchPageKey.'_'.$plugin.'_'.$act;
-		}
-		
+
 		//$this->savePostUrl = U('admin/Index/saveConfigData');
 		$this->savePageConfigUrl = U('Admin/Public/savePageConfig');
 		

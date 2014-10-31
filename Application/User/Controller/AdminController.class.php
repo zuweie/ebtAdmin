@@ -41,6 +41,7 @@ class AdminController extends AdministratorController
 		$this->pageTab[]   = array('title'=>L('ADMIN_EDIT_USER'), 'tabHash'=>'editUser', 'url'=>U('User/Admin/editUser'));
 		
 		$this->pageKeyList = array('uid', 'nickname', 'user_group','status');
+		$this->opt['user_group'] = D('User/UserGroup')->getUserGroupKV();
 		$this->savePostUrl = U('User/Admin/doEditUser');
 		$this->displayConfig($user);
 	}
@@ -114,7 +115,7 @@ class AdminController extends AdministratorController
 			$res = D('User/User')->delete($uid);
 			
 			if(!$res){
-				$this->ajaxReturn(0, L('ERR_DEL_FAIL'));
+				$this->ajaxReturnJson(0, L('ERR_DEL_FAIL'));
 			}else{
 				
 				// delete its privilege record
@@ -122,10 +123,10 @@ class AdminController extends AdministratorController
 				$map['uid'] = array('EQ', $uid);
 				D('User/UserPrivilege')->where($map)->delete();
 				
-				$this->ajaxReturn(1, L('MSG_DEL_SUCCESS'));
+				$this->ajaxReturnJson(1, L('MSG_DEL_SUCCESS'));
 			}
 		}else{
-			$this->ajaxReturn(0, L('ERR_DEL_FAIL'));
+			$this->ajaxReturnJson(0, L('ERR_DEL_FAIL'));
 		}
 		
 	}
@@ -223,6 +224,7 @@ class AdminController extends AdministratorController
 		
 		$up['uid'] = $uid;
 		$this->pageKeyList = array('uid', 'privilege');
+		$this->opt['privilege'] = D('User/Privilege')->getPrivilegeKV();
 		$this->savePostUrl = U('User/Admin/doAddUserPrivilege');
 		$this->displayConfig($up);
 	}
@@ -253,9 +255,9 @@ class AdminController extends AdministratorController
 		$res = D('User/UserPrivilege')->delete($upid);
 		
 		if(!$res){
-			$this->ajaxReturn(0, L('ERR_DEL_FAIL'));
+			$this->ajaxReturnJson(0, L('ERR_DEL_FAIL'));
 		}else{
-			$this->ajaxReturn(1, L('MSG_DEL_SUCCESS'));
+			$this->ajaxReturnJson(1, L('MSG_DEL_SUCCESS'));
 		}
 	}
 	
@@ -276,6 +278,7 @@ class AdminController extends AdministratorController
 		$this->pageTab[] = array('title'=>L('ADMIN_ADD_USER_GROUP_PRIVILEGE'),'tabHash'=>'addGroupPrivilege', 'url'=>U('User/Admin/addGroupPrivilege', array('gid'=>$gid)));
 		$gp['gid'] = $gid;
 		$this->pageKeyList = array('gid', 'privilege');
+		$this->opt['privilege'] = D('User/Privilege')->getPrivilegeKV();
 		$this->savePostUrl = U('User/Admin/doAddGroupPrivilege');
 		$this->displayconfig($gp);
 	}
@@ -306,9 +309,9 @@ class AdminController extends AdministratorController
 		$res = D('User/GroupPrivilege')->delete($id);
 		
 		if (!$res){
-			$this->ajaxReturn(0, L('ERR_DEL_FAIL'));
+			$this->ajaxReturnJson(0, L('ERR_DEL_FAIL'));
 		}else{
-			$this->ajaxReturn(1, L('MSG_DEL_SUCCESS'));
+			$this->ajaxReturnJson(1, L('MSG_DEL_SUCCESS'));
 		}
 	}
 	
@@ -395,7 +398,7 @@ class AdminController extends AdministratorController
 		$res = D('User/Privilege')->delete($pid);
 		
 		if (!$res){
-			$this->ajaxReturn(0, L('ERR_DEL_FAIL'));
+			$this->ajaxReturnJson(0, L('ERR_DEL_FAIL'));
 		}else{
 			
 			// TODO : delete the user privilege.
@@ -405,7 +408,7 @@ class AdminController extends AdministratorController
 			// TODO : delete the group privilege.
 			D('User/GroupPrivilege')->where($map)->delete();
 			
-			$this->ajaxReturn(1, L('MSG_DEL_SUCCESS'));
+			$this->ajaxReturnJson(1, L('MSG_DEL_SUCCESS'));
 		}
 	}
 }

@@ -18,7 +18,7 @@ class MyController extends Controller {
 		$this->assign('uid', $this->mid);
 	}
 	
-	public function ajaxReturn ($status, $data=''){
+	public function ajaxReturnJson ($status, $data=''){
 		$ret['status'] = $status;
 		$ret['data'] = $data;
 		echo json_encode($ret);

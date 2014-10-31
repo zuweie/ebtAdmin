@@ -25,9 +25,10 @@ class SystemDataModel extends MyModel {
 		$result = false;
 		// 格式化数据
 		if(is_array($listData)) {
-			$insert_sql	.=	"REPLACE INTO __TABLE__ (`list`,`key`,`value`,`mtime`) VALUES ";
+			$insert_sql	.=	"REPLACE INTO __TABLE__ (`list`,`key`,`value`,`utime`) VALUES ";
 			foreach($listData as $key => $data) {
-				$insert_sql	.= " ('$listName','$key','".serialize($data)."','".date('Y-m-d H:i:s')."') ,";
+				//$insert_sql	.= " ('$listName','$key','".serialize($data)."','".date('Y-m-d H:i:s')."') ,";
+				$insert_sql	.= " ('$listName','$key','".serialize($data)."','".time()."') ,";
 			}
 			$insert_sql	= rtrim($insert_sql,',');
 			// 插入数据列表
@@ -95,7 +96,8 @@ class SystemDataModel extends MyModel {
 			$insert_sql	= "INSERT INTO __TABLE__ ";
 		}
 
-		$insert_sql	.= "(`list`,`key`,`value`,`mtime`) VALUES ('$keys[0]','$keys[1]','$data','".date('Y-m-d H:i:s')."')";
+		//$insert_sql	.= "(`list`,`key`,`value`,`utime`) VALUES ('$keys[0]','$keys[1]','$data','".date('Y-m-d H:i:s')."')";
+		$insert_sql	.= "(`list`,`key`,`value`,`utime`) VALUES ('$keys[0]','$keys[1]','$data','".time()."')";
 		$result = $this->execute($insert_sql);
 
 		$cache_id = '_xdata_lget_'.$keys[0];

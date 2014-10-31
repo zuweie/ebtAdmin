@@ -37,16 +37,16 @@
   					<option value='checkbox' <eq name='keyType' value='checkbox'> selected="selected"</eq>>{:L('PUBLIC_CHAECKBOX')}</option>
   					<option value='date' <eq name='keyType' value='date'> selected="selected"</eq>>{:L('PUBLIC_DATE')}</option>
   					<option value='textarea' <eq name='keyType' value='textarea'> selected="selected"</eq>>{:L('PUBLIC_TEXTAREA')}</option>
-            		<option value='editor' <eq name='keyType' value='editor'> selected="selected"</eq>>{:L('PUBLIC_EDITOR')}</option>
+            		<!--<option value='editor' <eq name='keyType' value='editor'> selected="selected"</eq>>{:L('PUBLIC_EDITOR')}</option>-->
   					<option value='word' <eq name='keyType' value='word'> selected="selected"</eq>>{:L('PUBLIC_WORD')}</option>
   					<option value='hidden' <eq name='keyType' value='hidden'> selected="selected"</eq>>{:L('PUBLIC_INPUT_HIDDEN')}</option>
             		<option value='image' <eq name='keyType' value='image'> selected="selected"</eq>>{:L('PUBLIC_IMAGE_FILES')}</option>
   					<option value='file' <eq name='keyType' value='file'> selected="selected"</eq>>{:L('PUBLIC_INPUT_FILE')}</option>
-            		<option value='department' <eq name='keyType' value='department'> selected="selected"</eq>>{:L('PUBLIC_DEPARENT_FILES')}</option>
-            		<option value='user' <eq name='keyType' value='user'> selected="selected"</eq>>{:L('PUBLIC_USER_FILSE')}</option>
-            		<option value='oneUser' <eq name='keyType' value='oneUser'> selected="selected"</eq>>{:L('PUBLIC_USER_SELECT')}</option>
-            		<option value='stringText'<eq name='keyType' value='stringText'> selected="selected"</eq>>{:L('PUBLIC_MODSAVE_FILES')}</option>
-            		<option value='color'<eq name='keyType' value='color'> selected="selected"</eq>>色彩框：color</option>
+            		<!--<option value='department' <eq name='keyType' value='department'> selected="selected"</eq>>{:L('PUBLIC_DEPARENT_FILES')}</option>-->
+            		<!--<option value='user' <eq name='keyType' value='user'> selected="selected"</eq>>{:L('PUBLIC_USER_FILSE')}</option>-->
+            		<!--<option value='oneUser' <eq name='keyType' value='oneUser'> selected="selected"</eq>>{:L('PUBLIC_USER_SELECT')}</option>-->
+            		<!--<option value='stringText'<eq name='keyType' value='stringText'> selected="selected"</eq>>{:L('PUBLIC_MODSAVE_FILES')}</option> -->
+            		<!--<option value='color'<eq name='keyType' value='color'> selected="selected"</eq>>色彩框：color</option> -->
             		<option value='define'<eq name='keyType' value='define'> selected="selected"</eq>>{:L('PUBLIC_CUSTOM_DEFINE')}</option>
   				</select></td>
   				<td><input type='text' name='key_default[]' value='{$pageKeyData['key_default'][$key]}' class="s-txt"></td>
@@ -206,10 +206,11 @@
         <php>endif;</php>
       	
       	<php>if($keyType == 'image'):</php>
+      	
       	<!--  上传插件 -->
-	
+		<!--  
       	<div>
-      	<!-- <FORM style='display:inline;padding:0;margin:0;border:0'>  -->
+      
 			<div id="divup_{$upkey}" type="file" rel="{$upkey}">
 			<input type="file" name="attach" rel="{$upkey}" onchange="admin.upload('{$pk}',this)" urlquery='attach_type=feed_image&upload_type=image&thumb=1'></div>
            <div id='show_{$pk}'>
@@ -220,16 +221,18 @@
             <php>}</php>
           </div>
            <input name="{$pk}" id="form_{$pk}" type="hidden" value="{$defaultS}" class="s-txt" style="width:200px;" <neq name='event' value='' > onchange="{$event}"</neq>/>
-		   <!-- </FORM> -->
-    		</div>    
-		<php>++$upkey;</php>
+
+    		</div>
+    		<php>++$upkey;</php>
+    		-->
+		{:widget('Upload', array('uploadType'=>'image', 'inputname'=>$pk, 'attachIds'=>$defaultS))}
       	<php>endif;</php>
 
 
         <php>if($keyType == 'file'):</php>
         <div>
-
-        {:W('Upload',array('uploadType'=>'file','inputname'=>$pk,'attachIds'=>$defaultS))}
+        <!--  {:W('Upload',array('uploadType'=>'file','inputname'=>$pk,'attachIds'=>$defaultS))}-->
+        {:widget('Upload', array('uploadType'=>'file', 'inputname'=>$pk, 'attachIds'=>$defaultS))}
         </div>
         <php>endif;</php>
       	

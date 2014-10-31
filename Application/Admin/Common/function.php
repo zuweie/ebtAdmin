@@ -46,10 +46,14 @@ function regist_app($app_name) {
 		
 		if (isset($info['type'])){
 			$data['app_type'] = $info['type']; 
+		}else{
+			$data['app_type'] = 'app';
 		}
 		
 		if (isset($info['admin_layout'])){
 			$data['app_admin_layout'] = $info['admin_layout']; 
+		}else{
+			$data['app_admin_layout'] = 1;
 		}
 		
 		if (isset($info['desc'])){

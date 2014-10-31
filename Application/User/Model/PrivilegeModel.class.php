@@ -19,4 +19,21 @@ class PrivilegeModel extends MyModel {
 		return $listData;
 	}
 	
+	public function getPrivilege($fields=null, $map=array()){
+		if(isset($fields)){
+			$privilege = $this->field($fields)->where($map)->select();
+		}else{
+			$privilege = $this->where($map)->select();
+		}
+		return $privilege;
+	}
+	
+	public function getPrivilegeKV($map=array()){
+		$pp = $this->getPrivilege('pid, title', $map);
+		$kv = array();
+		foreach($pp as $p ){
+			$kv[$p['pid']] = $p['title'];
+		}
+		return $kv;
+	}
 }

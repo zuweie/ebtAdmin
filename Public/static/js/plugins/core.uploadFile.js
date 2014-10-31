@@ -98,7 +98,7 @@ core.uploadFile = {
 		//api for js public
 		upload:function(obj,callback,type,flag,allowType){
 			　var _this = this;
-			 core.loadFile(THEME_URL+'/js/jquery.form.js',function(){
+			 core.loadFile(PUBLIC_STATIC+'/js/jquery.form.js',function(){
 				core.uploadFile.init(obj,callback,type,flag,allowType);
 				if(!core.uploadFile.checkFile()){
 					if($(_this.resultDiv).find('li').size() <1 ){
@@ -127,7 +127,7 @@ core.uploadFile = {
 				}
 
 				if($(_this.resultDiv).find('.loading').size() < 1 ){
-					$(_this.resultDiv).find('ul').eq(0).append('<li class="loading"><div class="loads"><img src="'+THEME_URL+'/image/load.gif" style="width:auto;height:auto"></div><p class="tips upload_tips" style="padding:5px"><a href="javascript:core.uploadFile.stopupload()">'+L('PUBLIC_REMOVE_UPLOAD')+'</a></p></li>');	
+					$(_this.resultDiv).find('ul').eq(0).append('<li class="loading"><div class="loads"><img src="'+PUBLIC_STATIC+'/image/load.gif" style="width:auto;height:auto"></div><p class="tips upload_tips" style="padding:5px"><a href="javascript:core.uploadFile.stopupload()">'+L('PUBLIC_REMOVE_UPLOAD')+'</a></p></li>');	
 				}
 				
 
@@ -143,7 +143,8 @@ core.uploadFile = {
 					$(_this.parentForm).find('input[type="file"][rel!="'+$(obj).attr('rel')+'"]').remove();
 				}
 				_this.parentForm.method = "post";
-				_this.parentForm.action =  U('widget/Upload/save')+'&'+_this.urlquery;
+				//_this.parentForm.action =  U('Widget/Upload/save')+'&'+_this.urlquery;
+				_this.parentForm.action = U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save'+_this.urlquery;
 				$(_this.parentForm).ajaxSubmit({ 
 					dataType:'json',
 			        success: function (data) {
@@ -323,7 +324,8 @@ core.uploadFile = {
 				var offset = $(this.obj).offset();
 
 				var form = toElement('<form method="post" enctype="multipart/form-data"></form>');
-				form.action = U('widget/Upload/save')+'&'+this.urlquery;
+				//form.action = U('widget/Upload/save')+'&'+this.urlquery;
+				form.action =  U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save'+this.urlquery;
 				form.appendChild(this.obj);
 				document.body.appendChild(form);
 				$(form).css({'position':'absolute','left':offset.left+'px','top':offset.top+'px'});
