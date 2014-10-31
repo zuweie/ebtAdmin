@@ -30,6 +30,10 @@ class InstallController extends MyController{
 			
 			$res = regist_app('User');
 			
+			$res = install_app('Attach');
+			
+			$res = regist_app('Attach');
+			
 			$res = $this->_registAdminUser();
 			
 			// TODO : redirect to the login html

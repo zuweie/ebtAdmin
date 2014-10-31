@@ -9,8 +9,9 @@ class UserPrivilegeModel extends MyModel {
 	
 	public function getUserPrivilegeList($uid, $limit=20){
 		$map['uid'] = array('EQ', $uid);
-		$listData = $this->field('`user_privilege`.up_id, `user_privilege`.uid as uid, `privilege`.pid as pid, `privilege`.title as title, `privilege`.privilege as privilege')
-			 			 ->join('LEFT JOIN `privilege` ON `user_privilege`.privilege = `privilege`.pid')
+		$prefix = C('DB_PREFIX');
+		$listData = $this->field('`'.$prefix.'user_privilege`.up_id, `'.$prefix.'user_privilege`.uid as uid, `'.$prefix.'privilege`.pid as pid, `'.$prefix.'privilege`.title as title, `'.$prefix.'privilege`.privilege as privilege')
+			 			 ->join('LEFT JOIN `'.$prefix.'privilege` ON `'.$prefix.'user_privilege`.privilege = `'.$prefix.'privilege`.pid')
 			 			 ->where($map)->findPage($limit);
 		
 		foreach ($listData['data'] as $k => $v){

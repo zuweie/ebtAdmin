@@ -8,8 +8,8 @@
 -- -------------------------------------
 -- Table structure for `app`
 -- -------------------------------------
-DROP TABLE IF EXISTS `app`;
-CREATE TABLE `app` (
+DROP TABLE IF EXISTS `__PREFIX__app`;
+CREATE TABLE `__PREFIX__app` (
 	`app_id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'app id',
 	`app_name` VARCHAR(255) DEFAULT NULL COMMENT 'app name',
 	`app_title` VARCHAR(255) DEFAULT NULL COMMENT 'app title',
@@ -22,8 +22,8 @@ CREATE TABLE `app` (
 	`ctime` INT(11) NOT NULL COMMENT 'create time'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `system_config`;
-CREATE TABLE `system_config` (
+DROP TABLE IF EXISTS `__PREFIX__system_config`;
+CREATE TABLE `__PREFIX__system_config` (
 	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
 	`list` CHAR(30) DEFAULT 'default' COMMENT 'name of list',
 	`key` CHAR(50) DEFAULT 'default' COMMENT 'key',
@@ -32,8 +32,8 @@ CREATE TABLE `system_config` (
 	UNIQUE KEY `list_key` (`list`,`key`)
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `system_data`;
-CREATE TABLE `system_data` (
+DROP TABLE IF EXISTS `__PREFIX__system_data`;
+CREATE TABLE `__PREFIX__system_data` (
 	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
 	`list` CHAR(30) DEFAULT 'default' COMMENT 'name of list',
 	`key` CHAR (50) DEFAULT 'default' COMMENT 'key',

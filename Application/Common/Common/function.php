@@ -27,8 +27,9 @@ function exec_sql_file($file,  $stop = true,$db_charset = 'utf-8'){
 	$sql = fread($fp, filesize($file));
 	fclose($fp);
 	
-	$sql = str_replace("\r", "\n", str_replace('`'.'ts_', '`'.M('')->tablePrefix, $sql));
-	
+	$prefix = C('DB_PREFIX');
+	//$sql = str_replace("\r", "\n", str_replace('`'.'ts_', '`'.M('')->tablePrefix, $sql));
+	$sql = str_replace("\r", "\n", str_replace('`'.'__PREFIX__', '`'.$prefix, $sql));
 	foreach (explode(";\n", trim($sql)) as $query) {
 		$query = trim($query);
 		if($query) {

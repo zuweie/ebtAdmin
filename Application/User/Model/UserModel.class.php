@@ -13,11 +13,12 @@ class UserModel extends MyModel {
 	public function getLoginUser($login, $pass){
 		$map['login'] = array('EQ', $login);
 		$map['password'] = array('EQ', $pass);
+		$prefix = C('DB_PREFIX');
 		$res = $this->where($map)->find();
 		if($res){
 			unset($map);
 			$map['uid'] = array('EQ', $res['uid']);
-			$privilege = D('User/UserPrivilege')->field('`privilege`.privilege')->join('LEFT JOIN `privilege` ON `user_privilege`.privilege = `privilege`.pid')->where($map)->select();
+			$privilege = D('User/UserPrivilege')->field('`'.$prefix.'privilege`.privilege')->join('LEFT JOIN `'.$prefix.'privilege` ON `'.$prefix.'user_privilege`.privilege = `'.$prefix.'privilege`.pid')->where($map)->select();
 			$ps = array();
 			foreach($privilege as $p => $v){
 				$this->_setPrivilege($v['privilege'], $ps);
@@ -26,7 +27,7 @@ class UserModel extends MyModel {
 			
 			unset($map);
 			$map['gid'] = array('EQ', $res['user_group']);
-			$group_privilege = D('User/GroupPrivilege')->field('`privilege`.privilege')->join('LEFT JOIN `privilege` ON `group_privilege`.privilege = `privilege`.pid')->where($map)->select();
+			$group_privilege = D('User/GroupPrivilege')->field('`'.$prefix.'privilege`.privilege')->join('LEFT JOIN `'.$prefix.'privilege` ON `'.$prefix.'group_privilege`.privilege = `'.$prefix.'privilege`.pid')->where($map)->select();
 			$gps = array();
 			foreach ($group_privilege as $p => $v){
 				$this->_setPrivilege($v['privilege'], $gps);

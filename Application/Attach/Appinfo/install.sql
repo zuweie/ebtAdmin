@@ -5,8 +5,8 @@
 * verson : 0.1
 */
 
-DROP TABLE IF EXISTS `attach`;
-CREATE TABLE `attach` (
+DROP TABLE IF EXISTS `__PREFIX__attach`;
+CREATE TABLE `__PREFIX__attach` (
 	`attach_id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'attach id',
 	`ext` VARCHAR(15) DEFAULT NULL COMMENT 'extension',
 	`size` INT(11) DEFAULT 0 COMMENT 'size of the attach (KB)',
