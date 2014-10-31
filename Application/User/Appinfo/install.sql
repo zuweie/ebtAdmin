@@ -52,7 +52,7 @@ CREATE TABLE `__PREFIX__privilege` (
 	`privilege` TEXT DEFAULT NULL COMMENT 'privilege text'
 )ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT  INTO `__PREFIX__privilege` VALUES ('1', 'ADMIN', 'admin:3;app:3;usr:3;privilege:3;sysapp:3');
+INSERT  INTO `__PREFIX__privilege` VALUES ('1', 'ADMIN', 'admin:3;app:3;usr:3;privilege:3;sysapp:3;group:3');
 INSERT  INTO `__PREFIX__privilege` VALUES ('2', 'GUEST_ADMIN', 'admin:3;app:1;usr:1;privilege:1');
 
 
