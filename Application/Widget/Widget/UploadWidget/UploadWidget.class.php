@@ -33,6 +33,7 @@ class UploadWidget extends BaseWidget {
 				$data['src'] = $data['savepath'].$data['savename'];
 			}
 			*/
+			
 			$data['src'] = $attach_config['rootPath'].$data['savepath'].$data['savename'];
 			$data['src'] = ltrim($data['src'], '.');
 			$data['extension']  = strtolower($data['ext']);
@@ -151,6 +152,12 @@ class UploadWidget extends BaseWidget {
 			$aids = explode('|', $var['attachIds']);
 			$aids = array_filter($aids);
 			$attach = D('Attach/Attach')->getAttachByIds($aids);
+			if ($var['uploadType'] == 'image'){
+				foreach ($attach as $k => $v){
+					$attach[$k]['src'] = ltrim($v['filepath'],'.');
+					$attach[$k]['src'] .= $v['savename'];
+				}
+			}
 			if($attach){
 				$this->assign('attachInfo', $attach);
 			}

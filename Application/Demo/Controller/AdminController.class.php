@@ -35,7 +35,7 @@ class AdminController extends AdministratorController
 	
 	public function doAddDemo () {
 		$data['title'] = I('post.title', null);
-		$data['img']   = I('post.img', null);
+		$data['img']   = I('post.img_ids', null);
 		$data['file']  = I('post.file_ids', null);
 		$data['text']  = I('post.text', null);
 		
