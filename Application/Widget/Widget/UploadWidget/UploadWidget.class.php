@@ -20,20 +20,25 @@ class UploadWidget extends BaseWidget {
 	
 	public function save() {
 		
-		$attach_config = D('Admin/SystemData')->get('system:attach_config');
+		$uploadtype = I('get.upload_type', '');
+		
+		$attach_config = D('Admin/SystemData')->get('attach:config');
+		
+		if (!is_null(I('get.savepath', null))){
+			$attach_config['savePath'] = urldecode(I('get.savepath'));
+		}
 		
 		$info = $this->upload($attach_config);
 		
 		if($info['status']){
 			$data = $info['info'][0];
-			/*
-			if($thumb==1){
-				$data['src'] = getImageUrl($data['savepath'].$data['savename'],$width,$height,$cut);
-			}else{
+			
+			if($uploadtype == 'image'){
+				//$data['src'] = getImageUrl($data['savepath'].$data['savename'],$width,$height,$cut);
+			//}else{
 				$data['src'] = $data['savepath'].$data['savename'];
 			}
-			*/
-			
+						
 			$data['src'] = $attach_config['rootPath'].$data['savepath'].$data['savename'];
 			$data['src'] = ltrim($data['src'], '.');
 			$data['extension']  = strtolower($data['ext']);
@@ -169,5 +174,6 @@ class UploadWidget extends BaseWidget {
 		$this->assign('attachIds', $var['attachIds']);
 		$this->assign('limit', $var['limit']);
 		$this->assign('inForm', $var['inForm']);
+		$this->assign('urlquery', $data['urlquery']);
 	}
 }

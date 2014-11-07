@@ -144,7 +144,7 @@ core.uploadFile = {
 				}
 				_this.parentForm.method = "post";
 				//_this.parentForm.action =  U('Widget/Upload/save')+'&'+_this.urlquery;
-				_this.parentForm.action = U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save'+_this.urlquery;
+				_this.parentForm.action = U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save'+'&'+_this.urlquery;
 				$(_this.parentForm).ajaxSubmit({ 
 					dataType:'json',
 			        success: function (data) {
@@ -325,7 +325,7 @@ core.uploadFile = {
 
 				var form = toElement('<form method="post" enctype="multipart/form-data"></form>');
 				//form.action = U('widget/Upload/save')+'&'+this.urlquery;
-				form.action =  U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save'+this.urlquery;
+				form.action =  U('Widget/WidgetAgent/agentWidget') + '&w=Upload&wa=save&'+this.urlquery;
 				form.appendChild(this.obj);
 				document.body.appendChild(form);
 				$(form).css({'position':'absolute','left':offset.left+'px','top':offset.top+'px'});

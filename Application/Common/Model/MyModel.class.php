@@ -1,7 +1,8 @@
 <?php
 namespace Common\Model;
 use Think\Model;
-use Vendor\Page;
+use Think\Page;
+//use Vendor\Page;
 
 class MyModel extends Model {
 	
@@ -54,9 +55,9 @@ class MyModel extends Model {
 
 			// 输出控制
 			$output['count']		=	$count;
-			$output['totalPages']	=	$p->totalPages;
-			$output['totalRows']	=	$p->totalRows;
-			$output['nowPage']		=	$p->nowPage;
+			//$output['totalPages']	=	$p->totalPages;
+			//$output['totalRows']	=	$p->totalRows;
+			//$output['nowPage']		=	$p->nowPage;
 			$output['html']			=	$p->show();
 			$output['data']			=	$resultSet;
 			unset($resultSet);

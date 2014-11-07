@@ -18,7 +18,7 @@ class AdminController extends AdministratorController
 		$this->pageTab[] = array('title'=>L('ADMIN_ATTACH_CONFIG'), 'tabHash'=>'config', 'url'=>U('Attach/Admin/uploadConfig'));
 		$this->pageKeyList = array('mimes', 'maxSize', 'exts', 'autoSub', 'rootPath', 
 									'savePath', 'saveName', 'saveExt', 'replace', 'hash');
-		$listkey = 'system:attach_config';
+		$listkey = 'attach:config';
 		$data = D('Admin/SystemData')->get($listkey);
 		
 		// init the listData
@@ -65,7 +65,7 @@ class AdminController extends AdministratorController
 		$data['hash'] = I('post.hash', true);
 		
 		//$val['attach_config'][] = $data;
-		$keyval = 'system:attach_config';
+		$keyval = 'attach:config';
 		$res = D('Admin/SystemData')->put($keyval, $data);
 		if (!$res){
 			$this->error(L('ERR_SAVE_FAIL'));

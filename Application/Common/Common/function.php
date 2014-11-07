@@ -385,3 +385,8 @@ function auto_charset($fContents,$from,$to){
 		return $fContents;
 	}
 }
+
+// 
+function get_file_basename($file) {
+	return array_shift(explode('.', $file));
+}
