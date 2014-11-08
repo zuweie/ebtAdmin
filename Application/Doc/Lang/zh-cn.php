@@ -4,7 +4,7 @@ return array (
 	'DOC_ADMIN_LIST' => '文档列表',
 	'DOC_ADMIN_ADD'  => '添加文档',
 	'DOC_ADMIN_CONVERT_2_PDF' => '文档列表转换为PDF',
-	'DOC_ADMIN_CONFIG' => '文档配置',
+	'DOC_ADMIN_CONFIG' => '文件转换器配置',
 	'DOC_ADMIN_PDFPATH' => 'PDF存放目录',
 	'ERR_DOC_NO_EXISTS' => '文档不存在',
 	'MSG_DOC_CONVERT_SUCCESS' => '文档转换成功',
