@@ -12,6 +12,7 @@ return array (
 		'User/Admin/editUser' 	=> array('admin'=>0x3, 'usr'=>0x1),
 		'User/Admin/doEditUser' => array('admin'=>0x3, 'usr'=>0x2),
 		'User/Admin/addUser'	=> array('admin'=>0x3, 'usr'=>0x1),
+		'User/Admin/userGroup'  => array('admin'=>0x3, 'group'=>0x1),
 		'User/Admin/doAddUser'  => array('admin'=>0x3, 'usr'=>0x2),
 		'User/Admin/doAddUserGroup' => array('admin'=>0x3, 'group'=>0x2),
 		'User/Admin/delUser'    => array('admin'=>0x3, 'usr'=>0x2),
