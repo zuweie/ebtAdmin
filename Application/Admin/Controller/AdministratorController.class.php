@@ -158,7 +158,7 @@ class AdministratorController extends MyController {
 	{
 		// check login
 		
-		parent::_initialize();
+		//parent::_initialize();
 		
 		// old code
 		//$this->systemdata_list = APP_NAME.'_'.MODULE_NAME;

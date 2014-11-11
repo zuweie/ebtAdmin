@@ -15,6 +15,7 @@ return array (
 		'User/Admin/doAddUser'  => array('admin'=>0x3, 'usr'=>0x2),
 		'User/Admin/doAddUserGroup' => array('admin'=>0x3, 'group'=>0x2),
 		'User/Admin/delUser'    => array('admin'=>0x3, 'usr'=>0x2),
+		'User/Admin/delUserGroup'=> array('admin'=>0x3, 'group'=>0x2),
 		'User/Admin/privilege'  => array('admin'=>0x3, 'privilege'=>0x1),
 		'User/Admin/addPrivilege'    => array('admin'=>0x3, 'privilege'=>0x2),		
 		'User/Admin/editPrivilege' 	 => array('admin'=>0x3, 'privilege'=>0x1),
