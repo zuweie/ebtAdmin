@@ -151,7 +151,7 @@ class UploadWidget extends BaseWidget {
 		$var['inputname']   = isset($data['inputname'])? $data['inputname'] : 'attach';
 		$var['attachIds']   = isset($data['attachIds'])? $data['attachIds'] : "''";
 		$var['inForm']      = isset($data['inForm'])? $data['inForm'] : 1;
-		$var['limit']       = isset($data['limit'])? $data['limit'] : 1;
+		$var['limit']       = isset($data['limit'])? $data['limit'] : 4;
 		
 		if ($var['attachIds'] != ''){
 			$aids = explode('|', $var['attachIds']);

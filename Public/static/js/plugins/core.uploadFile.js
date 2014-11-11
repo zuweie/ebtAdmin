@@ -205,8 +205,13 @@ core.uploadFile = {
 				$(this.parentForm).html(html);
 			}
 			
-			$(this.resultDiv).find('.loading').remove();	
-
+			$(this.resultDiv).find('.loading').remove();
+			
+			$(this.parentForm).find('input#file_upload').each(function(){
+				//alert($(this).val());
+				$(this).val('');
+			});
+			
 			//验证是否已经上传过了
 /*			var hasUpload = false;
 			for(var i in this.filehash){
@@ -219,7 +224,8 @@ core.uploadFile = {
 				ui.error( L('PUBLIC_UPLOAD_ISNOT_TIPIES') );
 				return false;
 			}*/
-
+			
+			
 			if(status !="1"){
 				var type = this.type;
 				$(this.parentModel).parent().find('.input-content').each(function(){
