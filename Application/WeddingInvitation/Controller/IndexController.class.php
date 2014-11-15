@@ -75,11 +75,11 @@ class IndexController extends MyController {
 	
 	private function _getInvitationCover($name, $title){
 		// decode the name first.
-		
-		$coverfile = DATAS_PATH.$this->_getCoverNameByGuestName($name).'.png';
+		$covername = $this->_getCoverNameByGuestName($name);
+		$coverfile = DATAS_PATH.$covername.'.png';
 		
 		if (file_exists($coverfile)){
-			$cover_url = DATAS_DIR.$this->_getCoverNameByGuestName($name).'.png';
+			$cover_url = DATAS_DIR.$covername.'.png';
 			$this->assign('cover', $cover_url);
 		}else{
 			//create the png cover with name
@@ -91,7 +91,7 @@ class IndexController extends MyController {
 			$im->text($name, $fontfile, 50, '#00000000', Image::IMAGE_WATER_CENTER);
 			$im->text(' '.$title.'亲启      ', $fontfile, 20, '#00000000', Image::IMAGE_WATER_EAST);
 			$im->save($coverfile, 'png');
-			$cover_url = DATAS_PATH.$this->_getCoverNameByGuestName($name).'.png';
+			$cover_url = DATAS_DIR.$covername.'.png';
 			$this->assign('cover', $cover_url);
 			
 		}
