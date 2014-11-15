@@ -18,7 +18,7 @@ class AttachModel extends MyModel {
 	public function getAttachByIds($aids){
 		
 		if (is_string($aids)){
-			$map['attach_id'] = array('EQ', $adis);
+			$map['attach_id'] = array('EQ', $aids);
 		}else{
 			$map['attach_id'] = array('IN', $aids);
 		}

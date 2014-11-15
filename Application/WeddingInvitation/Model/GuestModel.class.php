@@ -13,6 +13,14 @@ class GuestModel extends MyModel {
 		$listData = $this->where($map)->findPage($limit);
 		
 		foreach ($listData['data'] as $k => $v){
+			if ($v['title'] == 'mr'){
+				$title = '先生';
+			}else if ($v['title'] = 'miss'){
+				$title = '女士';
+			}else if ($v['title'] == 'couple'){
+				$title = '伉俪';
+			}
+			$listData['data'][$k]['link'] = '<a href="'.U('WeddingInvitation/Index/index', array('name'=>urlencode($v['name']), 'title'=>urlencode($title))).'">'.U('WeddingInvitation/Index/index', array('name'=>urlencode($v['name']), 'title'=>urlencode($title))).'</a>';
 			$listData['data'][$k]['DOACTION'] = '<a href="'.U('WeddingInvitation/Admin/editGuest', array('id'=>$v['guest_id'], 'tabHash'=>'editGuest')).'">编辑</a>';
 			$listData['data'][$k]['DOACTION'] .= '|<a href="javascript:void(0);" onclick="wd.delGuest('.$v['guest_id'].')">删除</a>';
 		}

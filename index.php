@@ -29,8 +29,9 @@ define('SITE_URL', (IS_HTTPS? 'https:':'http:').'//'.SITE_DOMAIN.'/');
 // 定义静态资源目录
 define('PUBLIC_STATIC', SITE_URL.'Public/static/');
 define('APP_DIR', SITE_URL.'Application/');
-define('UPLOADS', SITE_URL.'Public/Uploads/');
-define('THEMES', SITE_URL.'Public/theme/');
+define('UPLOADS_PATH', './Public/Uploads/');
+define('UPLOADS_DIR', SITE_URL.'/Public/Uploads/');
+define('THEMES_DIR', SITE_URL.'Public/theme/');
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

@@ -19,7 +19,7 @@ class AdminController extends AdministratorController
 		
 		$this->pageTab[] = array('title'=>'嘉宾列表', 'tabHash'=>'index', 'url'=>U('WeddingInvitation/Admin/index'));
 		$this->pageTab[] = array('title'=>'添加嘉宾', 'tabHash'=>'addGuest', 'url'=>U('WeddingInvitation/Admin/addGuest'));
-		$this->pageKeyList = array('guest_id', 'name', 'title', 'people', 'desc', 'DOACTION');
+		$this->pageKeyList = array('guest_id', 'name', 'title', 'people', 'desc','link', 'DOACTION');
 		$uid = get_login_user_id();
 		$map['uid'] = array('EQ',$uid);
 		$listData = D('WeddingInvitation/Guest')->getGuestList(20, $map);
@@ -93,7 +93,7 @@ class AdminController extends AdministratorController
 	
 	public function config () {
 		$this->pageTab[] = array('title'=>'请柬配置', 'tableHash'=>'config', 'url'=>'#');
-		$this->pageKeyList = array('male', 'female', 'invitation', 'bg_pic1', 'bg_pic2', 'bg_music1', 'bg_music2', 'time', 'addr');
+		$this->pageKeyList = array('male', 'female', 'pic1', 'pic2', 'pic3',  'pic4', 'pic5', 'pic6', 'music', 'time', 'addr');
 		$config = D('Admin/SystemData')->get('weddinginvitation:config');
 		$this->savePostUrl = U('WeddingInvitation/Admin/doSaveConfig');
 		$this->displayConfig($config);
@@ -103,11 +103,13 @@ class AdminController extends AdministratorController
 		
 		$data['male'] = I('post.male', null);
 		$data['female'] = I('post.female', null);
-		$data['invitation'] =  I('post.invitation', null);
-		$data['bg_pic1'] = I('post.bg_pic1', null);
-		$data['bg_pic2'] = I('post.bg_pic2', null);
-		$data['bg_music1'] = I('post.bg_music1', null);
-		$data['bg_music2'] = I('post.bg_music2', null);
+		$data['pic4'] =  I('post.pic4_ids', null);
+		$data['pic1'] = I('post.pic1_ids', null);
+		$data['pic2'] = I('post.pic2_ids', null);
+		$data['pic3'] = I('post.pic3_ids', null);
+		$data['pic5'] = I('post.pic5_ids', null);
+		$data['pic6'] = I('post.pic6_ids', null);
+		$data['music'] = I('post.music_ids', null);
 		$data['time'] = I('post.time', null);
 		$data['addr'] = I('post.addr', null);
 		

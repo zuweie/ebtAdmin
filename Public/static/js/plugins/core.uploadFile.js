@@ -207,6 +207,9 @@ core.uploadFile = {
 			
 			$(this.resultDiv).find('.loading').remove();
 			
+			// 这里清除所有的<input type="file" id="file_upload">的value值。
+			// 否则在同一个form中使用两个UploadWidet的时候，会将上一次Upload的file也一并上传上去。
+			
 			$(this.parentForm).find('input#file_upload').each(function(){
 				//alert($(this).val());
 				$(this).val('');
