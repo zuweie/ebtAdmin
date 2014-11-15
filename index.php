@@ -18,8 +18,7 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 define('APP_DEBUG',True);
 
 
-// 定义应用目录
-define('APP_PATH','./Application/');
+
 
 // 定义网站根目录
 define('IS_HTTPS', 0);
@@ -28,9 +27,17 @@ define('SITE_URL', (IS_HTTPS? 'https:':'http:').'//'.SITE_DOMAIN.'/');
 
 // 定义静态资源目录
 define('PUBLIC_STATIC', SITE_URL.'Public/static/');
+
+// 定义应用目录
+define('APP_PATH','./Application/');
 define('APP_DIR', SITE_URL.'Application/');
+
 define('UPLOADS_PATH', './Public/Uploads/');
 define('UPLOADS_DIR', SITE_URL.'/Public/Uploads/');
+
+define('DATAS_PATH', './Public/Datas/');
+define('DATAS_DIR', SITE_URL.'/Public/Datas/');
+
 define('THEMES_DIR', SITE_URL.'Public/theme/');
 
 // 引入ThinkPHP入口文件
