@@ -41,12 +41,12 @@ class UserModel extends MyModel {
 		$list = $this->findPage($limit, false, $map);
 		
 		foreach($list['data'] as $k => $v){
-			$this->setData(&$list['data'][$k]);
+			$this->setData($list['data'][$k]);
 		}
 		return $list;
 	}
 	
-	public function setData($user){
+	public function setData(&$user){
 		$user['friendlydate'] = friendly_date($user['ctime']);
 		$user['DOACTION'] = '<a href="'.U('User/Admin/editUser', array('id'=>$user['uid'],'tabHash'=>'editUser')).'">'.L('ADMIN_EDIT').'</a>';
 		$user['DOACTION'] .= '|<a href="javascript:void(0);" onclick="user.del('.$user['uid'].')">'.L('ADMIN_DEL').'</a>';

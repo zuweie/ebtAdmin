@@ -15,13 +15,13 @@ class AppModel extends MyModel {
 		
 		if ($apps){
 			foreach ($apps['data'] as $k => $v){
-				$this->setData(&$apps['data'][$k]);
+				$this->setData($apps['data'][$k]);
 			}
 		}
 		return $apps;
 	}
 	
-	public function setData($app){
+	public function setData(&$app){
 		$app['friendlydate'] = friendly_date($app['ctime']);
 		// TODO set the uninstall operation
 		if ($app['app_type'] == 'sys'){
