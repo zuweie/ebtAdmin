@@ -20,48 +20,48 @@ class IndexController extends MyController {
 		// TODO : get Data 
 		// 1 music
 		// 2 pic1 pic2 pic3 pic4 pic5
-		if (!empty($config['music'])){
-			$mid = explode('|', $config['music']);
-			$mid = array_filter($mid);
-			$music_id = array_pop($mid);
+		$ms = explode('|', $config['music']);
+		$mids = array_filter($ms);
+		$mid = current($mids);
+		
+		if (!empty($mid)){
 			$music = D('Attach/Attach')->getAttachByIds($music_id);
 			$music_url = UPLOADS_DIR.$music[0]['savepath'].$music[0]['savename'];
 			$this->assign('music', $music_url);
 		}
-		
-		$pic = '';
+
+		$pic = array();
 		if (!empty($config['pic1'])){
-			$pic .= $config['pic1'];
+			$pic[$config['pic1']] = $config['pic1'];
 		}
 		if (!empty($config['pic2'])){
-			$pic .= $config['pic2'];
+			$pic[$config['pic2']] = $config['pic2'];
 		}
 		if (!empty($config['pic3'])){
-			$pic .= $config['pic3'];
+			$pic[$config['pic3']] = $config['pic3'];
 		}
 		if (!empty($config['pic4'])){
-			$pic .= $config['pic4'];
+			$pic[$config['pic4']] = $config['pic4'];
 		}
 		if (!empty($config['pic5'])){
-			$pic .= $config['pic5'];
+			$pic[$config['pic5']] = $config['pic5'];
 		}
 		if (!empty($config['pic6'])){
-			$pic .= $config['pic6'];
-		}
-		$pids = explode('|', $pic);
-		$pids = array_filter($pids);
-		
-		$pics = D('Attach/Attach')->getAttachByIds($pids);
-		
-		foreach($pics as $k => $v){
-			$pics[$k]['pic_url'] = UPLOADS_DIR.$v['savepath'].$v['savename'];
+			$pic[$config['pic6']] = $config['pic6'];
 		}
 		
-		$this->assign('pics', $pics);
+		$_pics = D('Attach/Attach')->getAttachByIds($pic);
+		
+		foreach($_pics as $k => $v){
+			//$_pics[$k]['pic_url'] = UPLOADS_DIR.$v['savepath'].$v['savename'];
+			$pic[$v['attach_id']] = UPLOADS_DIR.$v['savepath'].$v['savename']; 
+		}
+		
+		$this->assign('pics', $pic);
 		
 		$this->display();
 	}
-	
+		
 	private function _getCoverNameByGuestName($name) {
 		
 		$sz = strlen($name);

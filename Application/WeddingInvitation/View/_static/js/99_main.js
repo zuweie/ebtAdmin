@@ -866,7 +866,7 @@ var car2 = {
         lazyNode.each(function () {
             var self = $(this);
             if (self.is('img')) {
-                self.attr('src', '/template/19/img/loading_large.gif');
+                self.attr('src', '/Application/WeddingInvitation/View/_static/imgs/loading_large.gif');
             } else {
                 // 鎶婂師鏉ョ殑鍥剧墖棰勫厛淇濆瓨涓嬫潵
                 var position = self.css('background-position'),
@@ -884,7 +884,7 @@ var car2 = {
                 }
 
                 self.css({
-                    'background-image': 'url(/template/19/img/loading_large.gif)',
+                    'background-image': 'url(/Application/WeddingInvitation/View/_static/imgs/loading_large.gif)',
                     'background-size': '120px 120px',
                     'background-position': 'center'
                 })

@@ -208,23 +208,6 @@
       	<php>if($keyType == 'image'):</php>
       	
       	<!--  上传插件 -->
-		<!--  
-      	<div>
-      
-			<div id="divup_{$upkey}" type="file" rel="{$upkey}">
-			<input type="file" name="attach" rel="{$upkey}" onchange="admin.upload('{$pk}',this)" urlquery='attach_type=feed_image&upload_type=image&thumb=1'></div>
-           <div id='show_{$pk}'>
-            <php>if($defaultS && is_numeric($defaultS)){</php>
-              <img src="{$defaultS|getImageUrlByAttachId}" class="pic-size">
-            <php>}elseif (in_array($defaultS, array('level1.png', 'level2.png', 'level3.png', 'level4.png', 'level5.png', 'level6.png', 'level7.png', 'level8.png', 'level9.png', 'level10.png'))){</php>
-              <img src="__THEME__/image/level/{$defaultS}" class="pic-size" />
-            <php>}</php>
-          </div>
-           <input name="{$pk}" id="form_{$pk}" type="hidden" value="{$defaultS}" class="s-txt" style="width:200px;" <neq name='event' value='' > onchange="{$event}"</neq>/>
-
-    		</div>
-    		<php>++$upkey;</php>
-    		-->
 		{:widget('Upload', array('uploadType'=>'image', 'inputname'=>$pk, 'attachIds'=>$defaultS, 'urlquery'=>'upload_type=image'))}
       	<php>endif;</php>
 

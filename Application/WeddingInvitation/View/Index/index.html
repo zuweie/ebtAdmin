@@ -96,42 +96,36 @@
 			<!-- 封页 1-->
 
 			<div class="m-page m-fengye f-hide" data-page-type="info_pic3" data-statics="info_pic3" style="height: 659px;">
-				<div class="page-con lazy-img" data-src="{$pics[0]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[0]['pic_url']}); background-size: cover; height: 661px; background-position: 50% 50%;">
-				</div>
+				<div class="page-con lazy-img" data-src="<php>echo current($pics);</php>"></div>
 			</div>
 			
 			<!-- 封页 end-->
 			
 			<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-finish" data-src="{$pics[1]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[1]['pic_url']}); background-size: cover; background-position: 50% 50%;">
-				</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
 			</div>
 			
             <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-finish" data-src="{$pics[2]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[2]['pic_url']}); background-size: cover; background-position: 50% 50%;">
-				</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
 			</div>
 			
             <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-img" data-src="{$pics[3]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[3]['pic_url']}); background-size: cover; background-position: 50% 50%;">
-				</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
 			</div> 
             
             <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-img" data-src="{$pics[4]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[4]['pic_url']}); background-size: cover; background-position: 50% 50%;">
-				</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
 			</div>
 			
             <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-img" data-src="{$pics[5]['pic_url']}" data-position="50% 50%" data-size="cover" style="background-image: url({$pics[5]['pic_url']}); background-size: cover; background-position: 50% 50%;">
-				</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
 			</div> 
 			
 		    <!-- 大图文 3-->
 			<!-- 大图文 3-->
 			<!-- 最后一页作为邀请语句已经地点指明 -->
 			<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-img" data-src="img/13.jpg" data-position="50% 50%" data-size="cover" style="background-image: url(http://14.18.144.188:810/template/19/img/loading_large.gif); background-size: 120px; background-position: 50% 50%;">
+				<div class="page-con j-txtWrap lazy-img" data-src="img/13.jpg">
             
             	<div class="dianji-img">
             		<p><img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/13A.png"></p>
@@ -142,7 +136,7 @@
                 	</p>
                 	<div style="width:640px;">
                 		<!-- 百度地图API -->
-                  		<a href="http://map.baidu.com/mobile/webapp/place/detail/qt=ninf&amp;wd=暨南大学&amp;c=257&amp;searchFlag=bigBox&amp;version=5&amp;exptype=dep&amp;nb_x=12615508.63&amp;nb_y=2634430.83&amp;center_rank=1&amp;uid=ddc8fe7205e884a7b6f42ffd&amp;industry=education/showall=1&amp;detail_from=list&amp;third_party=wi&amp;vt=map" target="_black">
+                  		<a href="http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html" target="_black">
             				<img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/dianji2.png" style="float: right;">
             	  		</a>
                 	</div>
@@ -159,7 +153,6 @@
 	<!--meeting map-->
 	<div class="ylmap bigOpen">
 		<!--地图插件元素-->
-		<div class="bk"><span class="css_sprite01"></span></div>
 	</div>
 	<!--meeting map end-->
 	<!-- lightapp入口 -->

@@ -54,8 +54,8 @@ class AdminController extends AdministratorController
 		
 		$id = I('get.id', null);
 		$this->pageTab[] = array('title'=>'嘉宾列表', 'tabHash'=>'index', 'url'=>U('WeddingInvitation/Admin/index'));
-		$this->pageTab[] = array('title'=>'编辑嘉宾', 'tabHash'=>'editGuest', 'url'=>U('WeddingInvitation/Admin/editGuest', array('id'=>'$id')));
-		$this->pageKeyList = array('name', 'title', 'people','desc');
+		$this->pageTab[] = array('title'=>'编辑嘉宾', 'tabHash'=>'editGuest', 'url'=>U('WeddingInvitation/Admin/editGuest', array('id'=>$id)));
+		$this->pageKeyList = array('guest_id', 'name', 'title', 'people','desc');
 		$this->opt['title'] = array('miss'=>'女士', 'mr'=>'先生', 'couple'=>'夫妻');
 		$this->savePostUrl = U('WeddingInvitation/Admin/doEditGuest');
 		$guest = D('WeddingInvitation/Guest')->find($id);
@@ -63,7 +63,7 @@ class AdminController extends AdministratorController
 	}
 	
 	public function doEditGuest () {
-		$id = I('post.id', null);
+		$id = I('post.guest_id', null);
 		if ($id){
 			$data['name'] = I('post.name', null);
 			$data['title'] = I('post.title', null);
@@ -103,15 +103,16 @@ class AdminController extends AdministratorController
 		
 		$data['male'] = I('post.male', null);
 		$data['female'] = I('post.female', null);
-		$data['pic4'] =  I('post.pic4_ids', null);
-		$data['pic1'] = I('post.pic1_ids', null);
-		$data['pic2'] = I('post.pic2_ids', null);
-		$data['pic3'] = I('post.pic3_ids', null);
-		$data['pic5'] = I('post.pic5_ids', null);
-		$data['pic6'] = I('post.pic6_ids', null);
+		$data['pic4'] = $this->_takeVal(I('post.pic4_ids'));
+		$data['pic1'] = $this->_takeVal(I('post.pic1_ids'));
+		$data['pic2'] = $this->_takeVal(I('post.pic2_ids'));
+		$data['pic3'] = $this->_takeVal(I('post.pic3_ids'));
+		$data['pic5'] = $this->_takeVal(I('post.pic5_ids'));
+		$data['pic6'] = $this->_takeVal(I('post.pic6_ids'));
 		$data['music'] = I('post.music_ids', null);
 		$data['time'] = I('post.time', null);
 		$data['addr'] = I('post.addr', null);
+		
 		
 		$res = D('Admin/SystemData')->put('weddinginvitation:config', $data);
 		
@@ -119,6 +120,16 @@ class AdminController extends AdministratorController
 			$this->error(L('ERR_SAVE_FAIL'));
 		}else{
 			$this->success(L('MSG_SAVE_SUCCESS'), U('WeddingInvitation/Admin/config'));
+		}
+	}
+	
+	private function _takeVal($val){
+		if (!empty($val)){
+			$vals = explode('|', $val);
+			$vals = array_filter($vals);
+			return current($vals);
+		}else{
+			return $val;
 		}
 	}
 }
