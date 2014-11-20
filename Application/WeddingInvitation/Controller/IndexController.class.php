@@ -25,7 +25,7 @@ class IndexController extends MyController {
 		$mid = current($mids);
 		
 		if (!empty($mid)){
-			$music = D('Attach/Attach')->getAttachByIds($music_id);
+			$music = D('Attach/Attach')->getAttachByIds($mid);
 			$music_url = UPLOADS_DIR.$music[0]['savepath'].$music[0]['savename'];
 			$this->assign('music', $music_url);
 		}
