@@ -548,7 +548,7 @@ var car2 = {
             // 鍒囨崲鎴愬姛鍚庯紝鍙戦€佺粺璁�
             var laytouType = car2._page.eq(car2._pageNow).attr('data-statics');
 
-            car2.ajaxTongji(laytouType);
+           car2.ajaxTongji(laytouType);
         })
     },
 
@@ -1466,7 +1466,7 @@ var car2 = {
         var activity_id = $('#activity_id').val();
         var url = "/analyseplugin/plugin?activity_id=" + activity_id + "&plugtype=" + laytouType;
         //鎶ュ悕缁熻璇锋眰
-        $.get(url, {}, function () { });
+        //$.get(url, {}, function () { });
     },
 
     // 寰俊鐨勫垎浜彁绀�

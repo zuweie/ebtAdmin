@@ -6,7 +6,7 @@ use Think\Image;
 class IndexController extends MyController {
 	
 	public function index () {
-		
+		/*
 		$name = I('get.name',null);
 		$title = I('get.title',null);
 		
@@ -15,6 +15,10 @@ class IndexController extends MyController {
 			$title = urldecode($title);
 			$this->_getInvitationCover($name,$title);
 		}
+		*/
+		
+		// assign the cover 
+		//$this->assign('cover', DATAS_DIR.'org_inv_cover.jpg');
 		
 		$config = D('Admin/SystemData')->get('weddinginvitation:config');
 		// TODO : get Data 
@@ -53,7 +57,6 @@ class IndexController extends MyController {
 		$_pics = D('Attach/Attach')->getAttachByIds($pic);
 		
 		foreach($_pics as $k => $v){
-			//$_pics[$k]['pic_url'] = UPLOADS_DIR.$v['savepath'].$v['savename'];
 			$pic[$v['attach_id']] = UPLOADS_DIR.$v['savepath'].$v['savename']; 
 		}
 		
@@ -61,7 +64,7 @@ class IndexController extends MyController {
 		
 		$this->display();
 	}
-		
+	/*
 	private function _getCoverNameByGuestName($name) {
 		
 		$sz = strlen($name);
@@ -72,7 +75,8 @@ class IndexController extends MyController {
 		//$coverfile = UPLOADS.'doc/'.$covername.'.png';
 		return $covername;
 	}
-	
+	*/
+	/*
 	private function _getInvitationCover($name, $title){
 		// decode the name first.
 		$covername = $this->_getCoverNameByGuestName($name);
@@ -96,4 +100,5 @@ class IndexController extends MyController {
 			
 		}
 	}	
+	*/
 }

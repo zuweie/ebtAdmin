@@ -7,10 +7,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="Expires" content="-1">
 	<meta http-equiv="pragram" content="no-cache">
-	<link rel="stylesheet" type="text/css" href="{:APP_DIR}/{:MODULE_NAME}/View/_static/css/copyright.css">
-    <link rel="stylesheet" type="text/css" href="{:APP_DIR}/{:MODULE_NAME}/View/_static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="{:APP_DIR}/{:MODULE_NAME}/View/_static/css/add2home.css">
-	<script type="text/javascript" src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/offline.js"></script>
+	<link rel="stylesheet" type="text/css" href="/Application/WeddingInvitation/View/_static/css/copyright.css">
+    <link rel="stylesheet" type="text/css" href="/Application/WeddingInvitation/View/_static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/Application/WeddingInvitation/View/_static/css/add2home.css">
+	<script type="text/javascript" src="/Application/WeddingInvitation/View/_static/js/offline.js"></script>
 	<!--移动端版本兼容 -->
 	<script type="text/javascript">
 	    var phoneWidth = parseInt(window.screen.width);
@@ -30,6 +30,13 @@
 	        document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
 	    }
 	</script>
+	<script>
+		function onBaidumap(){
+				//alert('baidu map test');
+			window.location.href="http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html";
+			//window.open("http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html");
+		}
+	</script>
 	<!--移动端版本兼容 end -->
     <style>
     .dianji-img{
@@ -48,7 +55,7 @@
 <body class="s-bg-ddd pc perspective yes-3d" style="-webkit-user-select: none;">
 	<!--模版加载提示-->
 	<section class="u-alert">
-		<img style="display:none;" src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/loading_large.gif">
+		<img style="display:none;" src="/Application/WeddingInvitation/View/_static/imgs/loading_large.gif">
 		<div class="alert-loading z-move">
 			<div class="cycleWrap">
 				<span class="cycle cycle-1"></span>
@@ -125,25 +132,8 @@
 			<!-- 大图文 3-->
 			<!-- 最后一页作为邀请语句已经地点指明 -->
 			<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
-				<div class="page-con j-txtWrap lazy-img" data-src="img/13.jpg">
-            
-            	<div class="dianji-img">
-            		<p><img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/13A.png"></p>
-            		<p><br></p>
-            		<p><a href="richeng.jpg" target="_black"><img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/anpai.png"></a></p>
-            		<p><br></p>
-            		<p>
-                	</p>
-                	<div style="width:640px;">
-                		<!-- 百度地图API -->
-                  		<a href="http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html" target="_black">
-            				<img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/dianji2.png" style="float: right;">
-            	  		</a>
-                	</div>
-                	<p></p>
-               </div>
-			 </div>
-		</div>
+				<div class="page-con j-txtWrap lazy-img" data-src="/Application/WeddingInvitation/View/_static/imgs/org_inv_back.jpg" onclick="onBaidumap()"></div>
+			</div>
 			<!-- 大图文 end-->  
 		</div>
 		<!-- 旋转反面 end-->
@@ -160,7 +150,7 @@
 	<!-- lightapp入口 end-->
 	<!--pageLoading-->
 	<section class="u-pageLoading">
-		<img src="{:APP_DIR}/{:MODULE_NAME}/View/_static/imgs/load.gif" alt="loading">
+		<img src="/Application/WeddingInvitation/View/_static/imgs/load.gif" alt="loading">
 	</section>
 	<!--pageLoading end-->
 	
@@ -171,19 +161,19 @@
 	<!-- 微信分享信息 -->
 	
 	<input id="ca-tips" type="hidden" value="">
-	<input id="r-cover" type="hidden" value="{$cover}">
+	<input id="r-cover" type="hidden" value="/Application/WeddingInvitation/View/_static/imgs/org_inv_cover.jpg">
 	
 	<input id="r-wx-title" type="hidden" value="小梁小何婚礼邀请函">
-	<input id="r-wx-img" type="hidden" value="http://192.168.1.90/TouchMe2/img/wei.jpg">
+	<input id="r-wx-img" type="hidden" value="">
 	<input id="r-wx-con" type="hidden" value="梁何联婚，2014年12月27日，各位朋友快来围观。">	
 	<!-- 资源传递 end-->
 
 	<!--脚本加载-->
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/init.mix.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/weixin.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/coffee.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/10_ylMap.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/Lottery.js" type="text/javascript" charset="utf-8"></script>
-	<script src="{:APP_DIR}/{:MODULE_NAME}/View/_static/js/99_main.js?1404267694" type="text/javascript" charset="utf-8" defer＝'defer'=""></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/init.mix.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/weixin.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/coffee.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/10_ylMap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/Lottery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/WeddingInvitation/View/_static/js/99_main.js?1404267694" type="text/javascript" charset="utf-8" defer＝'defer'=""></script>
 	<!--脚本加载 end-->	
 </body></html>
