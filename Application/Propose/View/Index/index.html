@@ -1,0 +1,177 @@
+<html><head>
+	<title>{$pagetitle}</title>
+	<meta charset="utf-8">
+	<meta name="apple-touch-fullscreen" content="YES">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="pragram" content="no-cache">
+	<link rel="stylesheet" type="text/css" href="/Application/Propose/View/_static/css/copyright.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Propose/View/_static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Propose/View/_static/css/add2home.css">
+	<script type="text/javascript" src="/Application/Propose/View/_static/js/offline.js"></script>
+	<!--移动端版本兼容 -->
+	<script type="text/javascript">
+	    var phoneWidth = parseInt(window.screen.width);
+	    var phoneScale = phoneWidth / 640;
+	    var ua = navigator.userAgent;
+	    if (/Android (\d+\.\d+)/.test(ua)) {
+	        var version = parseFloat(RegExp.$1);
+	        // andriod 2.3
+	        if (version > 2.3) {
+	            document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+	            // andriod 2.3以上
+	        } else {
+	            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	        }
+	        // 其他系统
+	    } else {
+	        document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+	    }
+	</script>
+	<script>
+		function onBaidumap(){
+				//alert('baidu map test');
+			window.location.href="http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html";
+			//window.open("http://api.map.baidu.com/marker?location=23.12363,113.248183&title=稻香酒家&content=广州恒宝华庭店&output=html");
+		}
+	</script>
+	<!--移动端版本兼容 end -->
+    <style>
+    .dianji-img{
+	width:100%;
+	z-index:999;
+	position:fixed;
+	margin-left:auto;
+	margin-right:auto;
+	max-width:480px;
+    top:50%;
+    margin-top: -340px; 
+    }
+    </style>
+</head>
+
+<body class="s-bg-ddd pc perspective yes-3d" style="-webkit-user-select: none;">
+	<!--模版加载提示-->
+	<section class="u-alert">
+		<img style="display:none;" src="/Application/Propose/View/_static/imgs/loading_large.gif">
+		<div class="alert-loading z-move">
+			<div class="cycleWrap">
+				<span class="cycle cycle-1"></span>
+				<span class="cycle cycle-2"></span>
+				<span class="cycle cycle-3"></span>
+				<span class="cycle cycle-4"></span>
+			</div>
+			<div class="lineWrap">
+				<span class="line line-1"></span>
+				<span class="line line-2"></span>
+				<span class="line line-3"></span>
+			</div>
+		</div>
+	</section>
+	<!--模版加载提示 end-->
+	
+			<!-- 声音控件 -->
+	<section class="u-audio f-hide" data-src="{$music}">
+		<p id="coffee_flow" class="btn_audio">
+			<strong class="txt_audio z-hide">关闭</strong>
+			<span class="css_sprite01 audio_open"></span>
+			<div class="coffee-steam-box" style="height: 100px; width: 44px; left: 60px; top: -50px; position: absolute; overflow: hidden; z-index: 0;"></div>
+		</p>
+	</section>
+	<!-- 声音控件 end-->
+	<!-- 箭头指示引导 -->
+	<section class="u-arrow f-hide">
+		<p class="css_sprite01"></p>
+	</section>
+	<!-- 箭头指示引导 end-->
+
+	<!-- page页面内容 -->
+	<section class="p-ct transformNode-3d" style="height: 659px;">
+		<!-- 旋转正面 -->
+		<div id="j-mengban" class="translate-front" style="height: 659px;">
+			<div class="mengban-warn"></div>
+				
+		</div>
+		<!-- 旋转正面 end-->
+		
+		<!-- 旋转反面 -->
+		<div class="translate-back f-hide" style="height: 659px;">
+			
+			
+			<!-- 封页 1-->
+
+			<div class="m-page m-fengye f-hide" data-page-type="info_pic3" data-statics="info_pic3" style="height: 659px;">
+				<div class="page-con lazy-img" data-src="<php>echo current($pics);</php>"></div>
+			</div>
+			
+			<!-- 封页 end-->
+			
+			<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
+			</div>
+			
+            <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
+			</div>
+			
+            <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
+			</div> 
+            
+            <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
+			</div>
+			
+            <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height: 659px;">
+				<div class="page-con j-txtWrap lazy-img" data-src="<php>echo next($pics);</php>"></div>
+			</div> 
+			
+		    <!-- 大图文 3-->
+			<!-- 大图文 3-->
+			<!-- 最后一页作为邀请语句已经地点指明 -->
+			
+			<!-- 大图文 end-->  
+		</div>
+		<!-- 旋转反面 end-->
+	</section>
+	<!-- 正文介绍 end-->
+
+	<!--meeting map-->
+	<div class="ylmap bigOpen">
+		<!--地图插件元素-->
+	</div>
+	<!--meeting map end-->
+	<!-- lightapp入口 -->
+	
+	<!-- lightapp入口 end-->
+	<!--pageLoading-->
+	<section class="u-pageLoading">
+		<img src="/Application/Propose/View/_static/imgs/load.gif" alt="loading">
+	</section>
+	<!--pageLoading end-->
+	
+	<!-- 资源传递 -->
+	<!-- 模版ID -->	
+	<!-- 微信分享信息 -->
+	<!-- 微信分享信息 -->
+	<!-- 微信分享信息 -->
+	
+	<input id="ca-tips" type="hidden" value="">
+	<input id="r-cover" type="hidden" value="{$cover}">
+	
+	<input id="r-wx-title" type="hidden" value="{$wxtitle}">
+	<input id="r-wx-img" type="hidden" value="{$wxcover}">
+	<input id="r-wx-con" type="hidden" value="{$wxcontent}">	
+	<!-- 资源传递 end-->
+
+	<!--脚本加载-->
+	<script src="/Application/Propose/View/_static/js/init.mix.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/Propose/View/_static/js/weixin.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/Propose/View/_static/js/coffee.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/Propose/View/_static/js/10_ylMap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/Propose/View/_static/js/Lottery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/Application/Propose/View/_static/js/99_main.js?1404267694" type="text/javascript" charset="utf-8" defer＝'defer'=""></script>
+	<!--脚本加载 end-->	
+</body></html>
