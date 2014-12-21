@@ -34,9 +34,9 @@ class AdminController extends AdministratorController
 		$data['pic6'] = $this->_takeVal(I('post.pic6_ids'));
 		$data['music'] = $this->_takeVal(I('post.music_ids'));
 		$data['wxcover'] = $this->_takeVal(I('post.wxcover_ids'));
-		$data['wxtitle'] = tt(I('post.wxtitle'));
-		$data['wxcontent'] = tt(I('post.wxcontent'));
-		$data['pagetitle'] = tt(I('post.pagetitle'));
+		$data['wxtitle'] = I('post.wxtitle', null);
+		$data['wxcontent'] = I('post.wxcontent', null);
+		$data['pagetitle'] = I('post.pagetitle', null);
 		
 		$res = D('Admin/SystemData')->put('propose:config', $data);
 		
