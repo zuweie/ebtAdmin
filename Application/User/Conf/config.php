@@ -6,7 +6,6 @@ return array (
 						'User/Login/logout'=>1),
 		
 	'privilege_ctrl' => true,
-	
 	'privilege' => array(
 		'User/Admin/index'		=> array('admin'=>0x3, 'usr'=>0x1),
 		'User/Admin/editUser' 	=> array('admin'=>0x3, 'usr'=>0x1),

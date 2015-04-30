@@ -60,7 +60,7 @@ class AdminController extends AdministratorController
 		$this->pageTab[] = array('title'=>L('DOC_ADMIN_CONFIG'), 'tabHash'=>'config', 'url'=>U('Doc/Admin/config'));
 		$this->savePostUrl = U('Doc/Admin/doConfig');
 		$this->pageKeyList = array('ext', '_converter', 'cmd', 'output');
-		$this->opt['_converter'] = array(0=>'no', 1=>'yes'); 
+		$this->opt['_converter'] = array(0=>'no', 1=>'yes');
 		$config = D('Admin/SystemData')->get('doc:config');
 		$this->displayConfig($config);
 	}
