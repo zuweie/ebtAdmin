@@ -3,6 +3,30 @@ body {
   padding-top: 50px;
 }
 .starter-template {
-  padding: 40px 15px;
+  padding-top: 10px;
   text-align: center;
+}
+.pt10{
+	padding-top: 10px;
+}
+
+.mt5{
+	margin-top:5px;	
+}
+.tx_center{
+	text-align: center;
+}
+
+.color_ccc{
+	color:#ccc;
+}
+
+dl#process_info dt{
+	font-size:85%;
+	color:#ccc;
+	margin-top:5px;
+}
+
+dl#process_info dd{
+	margin-top: 5px;
 }

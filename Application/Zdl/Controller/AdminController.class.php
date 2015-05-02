@@ -33,8 +33,8 @@ class AdminController extends AdministratorController
 		$this->pageKeyList = array('dev_name', 'dev_type', 'dev_zbh', 'dev_bah', 'dev_cch', 'specification', 'model', 'brand', 'mainbody');
 		$this->opt['dev_type'] = D('Zdl/Dev')->getDevType();
 		$this->opt['specification'] = array('80'=>'80', '100'=>'100', '63'=>'63');
-		$this->opt['model'] = array('5013'=>'5013', '5613'=>'5613', '6012'=>'6012');
-		$this->opt['brand'] = array('五羊'=>'五羊', '聚龙'=>'聚龙', '中联'=>'中联');
+		$this->opt['model'] = array('5013'=>'5013', '5610'=>'5610', '5613'=>'5613','6012'=>'6012', '6013'=>'6013','6512'=>'6512', '6513'=>'6513');
+		$this->opt['brand'] = array('五羊'=>'五羊', '聚龙'=>'聚龙', '中联'=>'中联', '江汉'=>'江汉');
 		$this->opt['mainbody'] = array('1'=>'是', '0'=>'否');
 		$this->savePostUrl = U('Zdl/Admin/doAddDev');
 		$this->displayConfig();
@@ -70,12 +70,12 @@ class AdminController extends AdministratorController
 		$dev['specification'] = $attr['specification'];
 		$dev['model'] = $attr['model'];
 		$dev['brand'] = $attr['brand'];
-		$this->pageKeyList = array('dev_id', 'dev_name', 'dev_type', 'dev_zbh', 'dev_bah', 'dev_cch','specification', 'model', 'brand', 'mainbody');
+		$this->pageKeyList = array('dev_id', 'dev_name', 'dev_type', 'dev_zbh', 'dev_bah', 'dev_cch','specification', 'model', 'brand', 'dev_mainbody');
 		$this->opt['specification'] = array('80'=>'80', '100'=>'100', '63'=>'63');
-		$this->opt['model'] = array('5013'=>'5013', '5613'=>'5613', '6012'=>'6012');
-		$this->opt['brand'] = array('五羊'=>'五羊', '聚龙'=>'聚龙', '中联'=>'中联');
+		$this->opt['model'] = array('5013'=>'5013', '5610'=>'5610', '5613'=>'5613', '6012'=>'6012', '6013'=>'6013','6512'=>'6512', '6513'=>'6513');
+		$this->opt['brand'] = array('五羊'=>'五羊', '聚龙'=>'聚龙', '中联'=>'中联', '江汉'=>'江汉');
 		$this->opt['dev_type'] = D('Zdl/Dev')->getDevType();
-		$this->opt['mainbody'] = array(0=>'否', 1=>'是');
+		$this->opt['dev_mainbody'] = array(0=>'否', 1=>'是');
 		$this->savePostUrl = U('Zdl/Admin/doEditDEv');
 		$this->displayConfig($dev);
 	}
@@ -87,7 +87,7 @@ class AdminController extends AdministratorController
 		$data['dev_cch']  = I('post.dev_cch');
 		$data['dev_bah']  = I('post.dev_bah');
  		$data['dev_type'] = I('post.dev_type');
- 		$data['dev_mainbody'] = I('post.mainbody');
+ 		$data['dev_mainbody'] = I('post.dev_mainbody');
 		$attr['specification'] = I('post.specification');
 		$attr['model'] = I('post.model');
 		$attr['brand'] = I('post.brand');
@@ -169,7 +169,7 @@ class AdminController extends AdministratorController
 					if (!$res){
 						$this->error(L('ERR_SAVE_FAIL'));
 					}else{
-						$this->success(L('MSG_SAVE_SUCCESS'), U('Zdl/Admin/Process'));
+						$this->success(L('MSG_SAVE_SUCCESS'), U('Zdl/Admin/process'));
 					}
 				}
 			}else{
@@ -188,6 +188,28 @@ class AdminController extends AdministratorController
 		// TODO : get the project
 		$id = I('get.id');
 		$process = D('Zdl/Process')->find($id);
+		$maindev = D('Zdl/Dev')->getProcessedMainDev($id);
+		if (!empty($maindev)){
+			$devtype = $maindev['dev_type'];
+			if ($devtype == 1){
+				$this->pageKeyList[] = 'sj'; // 司机
+				$this->pageKeyList[] = 'sj_phone'; // 司机电话
+				$this->pageKeyList[] = 'ta_bic';//臂长
+				$this->pageKeyList[] = 'ta_bzj'; // 标准节数
+				$this->pageKeyList[] = 'ta_height'; // 高度
+				$this->pageKeyList[] = 'ta_fuq'; // 扶墙
+				$this->pageKeyList[] = 'dev_type';
+				
+				$context = unserialize($process['p_context']);
+				$process['sj'] = $context['sj'];
+				$process['sj_phone'] = $context['sj_phone'];
+				$process['ta_bic'] = $context['ta_bic'];
+				$process['ta_bzj'] = $context['ta_bzj'];
+				$process['ta_fuq'] = $context['ta_fuq'];
+				$process['ta_height'] = $context['ta_height'];
+				$process['dev_type'] = $devtype;
+ 			}
+		}
 		$this->savePostUrl = U('Zdl/Admin/doEditProcessInfo');
 		$this->displayConfig($process);
 	}
@@ -195,7 +217,7 @@ class AdminController extends AdministratorController
 	public function doEditProcessInfo() {
 		$id = I('post.p_id');
 		$data['p_title'] = I('post.p_title');
-		$data['p_context'] = I('post.p_context');
+		$scontext = I('post.p_context');
 		$data['p_status'] = I('post.p_status');
 		$data['p_id'] = $id;
 		
@@ -211,6 +233,19 @@ class AdminController extends AdministratorController
 			$data['p_closed'] = 0;
 		}
 		
+		// deal with the context
+		$context = unserialize($scontext);
+		$devtype = I('post.dev_type');
+		if ($devtype == 1){
+			// 这是塔吊
+			$context['sj'] = I('post.sj');
+			$context['sj_phone'] = I('post.sj_phone');
+			$context['ta_bic'] = I('post.ta_bic');
+			$context['ta_bzj'] = I('post.ta_bzj');
+			$context['ta_fuq'] = I('post.ta_fuq');
+			$context['ta_height'] = I('post.ta_height');
+		}
+		$data['p_context'] = serialize($context);
 		$res = D('Zdl/Process')->save($data);
 		if(!$res){
 			$this->error(L('ERR_SAVE_FAIL'));

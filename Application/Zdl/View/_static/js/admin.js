@@ -58,6 +58,18 @@ zdl.delStatus = function (id) {
 	}
 }
 
+zdl.delProcess = function (id) {
+	if(confirm('确认删除这个设备进程么?')){
+		$.post(U('Zdl/Admin/delProcess'),
+			   {id:id},
+			   function(msg){
+				   zdl.ajaxload(msg);
+			   },
+			   'json'
+		);
+	}
+}
+
 zdl.delProject = function (id){
 	if(confirm('确认删除这个大项目么?')){
 		$.post(U('Zdl/Admin/delProject'),
