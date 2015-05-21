@@ -31,6 +31,95 @@ class ZdlController extends MyController {
 		$this->display();
 	}
 	
+	public function repairationlist() {
+		$pid = I('get.pid');
+		$task = D('Zdl/Task')->getTaskByProcessId($pid);
+		$this->assign('pid', $pid);
+		$this->assign('task', $task['data']);
+		$this->display();
+	}
+	
+	public function addRepairationRecord() {
+		$pid = I('get.pid');
+		$tid = I('get.tid');
+		$process = D('Zdl/Process')->getProcessById($pid);
+		$this->assign('process', $process);
+		$this->assign('pid', $pid);
+		if (!empty($tid)){
+			$task = D('Zdl/Task')->find($tid);
+			$this->assign('task', $task);
+		}
+		if (empty($tid)){
+			$this->assign('save_url', U('Zdl/Zdl/doAddRepairationRecord'));
+		}else {
+			$this->assign('save_url', U('Zdl/Zdl/doEditRepairationRecord'));
+		}
+		$this->display();
+	}
+	
+	public function doAddRepairationRecord() {
+		$pid = I('post.pid');
+		if (!empty($pid)){
+			$data['t_title'] = I('post.t_title');
+			$data['t_request'] = I('post.t_request');
+			$data['t_response'] = I('post.t_response');
+			$data['t_attention'] = I('post.t_attention');
+			$data['t_date']  = time();
+			$data['t_process'] = I('post.pid');
+			$res = D('Zdl/Task')->add($data);
+			if (!$res){
+				$this->error(L('ERR_SAVE_FAIL'));
+			}else{
+				$this->success(L('MSG_SAVE_SUCCESS'), U('Zdl/Zdl/repairationlist', array('pid'=>$pid)));
+			}
+		}else{
+			$this->error(L('ERR_SAVE_FAIL'));
+		}
+	}
+	
+	public function doEditRepairationrecord() {
+		$tid = I('post.tid');
+		$pid = I('post.pid');
+		if (!empty($tid) && !empty($pid)){
+			$data['t_title'] = I('post.t_title');
+			$data['t_request'] = I('post.t_request');
+			$data['t_response'] = I('post.t_response');
+			$data['t_id'] = $tid;
+			$res = D('Zdl/Task')->save($data);
+			
+			if (!$res){
+				$this->error(L('ERR_SAVE_FAIL'));
+			}else{
+				$this->success(L('MSG_SAVE_SUCCESS'), U('Zdl/Zdl/repairationlist', array('pid'=>$pid)));
+			}
+		}else{
+			$this->error(L('ERR_SAVE_FAIL'));
+		}
+	}
+	
+	public function delRepairationRecord() {
+		$tid = I('get.tid');
+		$pid = I('get.pid');
+		if (!empty($tid)){
+			$res = D('Zdl/Task')->delete($tid);
+			if (!$res){
+				$this->error(L('ERR_DEL_FAIL'), U('Zdl/Zdl/repairationlist', array('pid'=>$pid)));
+			}else{
+				$this->success(L('MSG_DEL_SUCCESS'), U('Zdl/Zdl/repairationlist', array('pid'=>$pid)));
+			}
+		}else{
+			$this->error(L('ERR_DEL_FAIL'), U('Zdl/Zdl/repairationlist', array('pid'=>$pid)));
+		}
+	}
+	
+	public function repairationdetail () {
+		$tid = I('get.tid');
+		$pid = I('get.pid');
+		$task = D('Zdl/Task')->find($tid);
+		$this->assign('task', $task);
+		$this->display();
+	}
+	
 	public function machinelist() {
 		$this->display();
 	}

@@ -30,43 +30,39 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">工地列表</a>
+          <a class="navbar-brand" href="<php>echo U('Zdl/Zdl/index'); </php>">工地列表</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <!-- 
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<php>echo U('Zdl/Zdl/index');</php>">项目列表</a></li>
-            <li><a href="<php>echo U('Zdl/Zdl/machine');</php>">设备列表</a></li>
+            <li><a href="<php>echo U('Zdl/Zdl/repairationlist', array('pid'=>$pid));</php>">维修记录</a></li>
+            <li class="active"><a href="#"><php>if(empty($task)){echo '添加维修记录';}else{echo '编辑维修记录';}</php></a></li>
           </ul>
-           -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
       <div class="starter-template">
-      	<table class="table table-hover">
-      		<thead>
-      			<tr>
-      				<th>名称</th>
-      				<!-- <th>地址</th> -->
-      				<th>设备列表</th>
-      			</tr>
-      		</thead>
-      		<tbody>
-      			<volist name="projects" id="project">
-      				<tr>
-      					<td>{$project['pro_title']}</td>
-      					<!-- <td><small>{$project['pro_addr']}</small></td> -->
-      					<td><ol class="unstyled"><php>
-      							$process = $pp[$project['pro_id']];
-      							foreach($process as $p){</php>
-      								<li><small><a href="<php> echo U('Zdl/Zdl/process', array('id'=>$p['p_id']));</php>">{$p['p_title']}</a></small></li>
-      						<php>}</php></ol></td>
-      				</tr>
-      			</volist>
-      		</tbody>
-      	</table>
+      	<form method="post" action="{$save_url}">
+      		<fieldset>
+      			<legend>{$process['p_title']} -- 维修记录</legend>
+      			<dl id="process_info" class="dl-horizontal">
+      				<dt>维修事项:</dt>
+      				<dd><input type="text" name="t_title" placeholder="简单描述一下情况" value="{$task['t_title']}"></dd>
+      				<dt>损坏情况:</dt>
+      				<dd><textarea name="t_request" placeholder="简单描述一下什么坏了？" cols="30" rows="5">{$task['t_request']}</textarea>
+      				<dt>维修结果:</dt>
+      				<dd><textarea name="t_response" placeholder="简单描述一下修复情况" cols="30" rows="5">{$task['t_response']}</textarea>
+      				<dt>未修复情况:</dt>
+      				<dd><textarea name="t_attention" placeholder="简单描述一下还有什么未修好，要注意的" cols="30" rows="5">{$task['t_attention']}</textarea>
+      			</dl>
+      			<php>if(!empty($task['t_id'])){</php>
+      			<input type="hidden" name="tid" value="{$task['t_id']}">
+      			<php>}</php>
+      			<input type="hidden" name="pid" value="{$pid}">
+      			<input type="submit" class="btn" value="提交">
+      		</fieldset>
+      	</form>
       </div>
     </div><!-- /.container -->
 

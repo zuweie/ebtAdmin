@@ -30,12 +30,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{$process['p_title']}</a>
+          <a class="navbar-brand" href="<php>echo U('Zdl/Zdl/index')</php>">工地列表</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<php>echo U('Zdl/Zdl/index');</php>">工地列表</a></li>
-            <!-- <li><a href="<php>echo U('Zdl/Zdl/machine');</php>">设备列表</a></li> -->
+            <!-- <li class="active"><a href="<php>echo U('Zdl/Zdl/index');</php>">工地列表</a></li>  -->
+            <li ><a href="<php>echo U('Zdl/Zdl/repairationlist', array('pid'=>$process['p_id']));</php>">维修记录</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -46,24 +46,24 @@
       	<h3 class="tx_center">{$process['p_title']}</h3>
       	<dl id="process_info" class="dl-horizontal">
       		<dt>设备编号:</dt>
-      		<dd>{$maindev['dev_zbh']}</dd>
+      		<dd class="bg_color_dfe6d0">{$maindev['dev_zbh']}</dd>
       		<dt>所在工地:</dt>
-      		<dd>{$project['pro_title']}&nbsp;({$project['pro_addr']})</dd>
+      		<dd class="bg_color_dfe6d0">{$project['pro_title']}&nbsp;({$project['pro_addr']})</dd>
       		<dt>使用状态:</dt>
-      		<dd>{$process['status']}</dd>
+      		<dd class="bg_color_dfe6d0">{$process['status']}</dd>
       		<php>if($maindev['dev_type'] == 1){</php>
       			<dt>司机:</dt>
-      			<dd>{$context['sj']}</dd>
+      			<dd class="bg_color_dfe6d0">{$context['sj']}</dd>
       			<dt>司机电话:</dt>
-      			<dd>{$context['sj_phone']}</dd>
+      			<dd class="bg_color_dfe6d0">{$context['sj_phone']}</dd>
       			<dt>臂长:</dt>
-      			<dd>{$context['ta_bic']}米</dd>
+      			<dd class="bg_color_dfe6d0">{$context['ta_bic']}米</dd>
       			<dt>标准节:</dt>
-      			<dd>{$context['ta_bzj']}</dd>
+      			<dd class="bg_color_dfe6d0">{$context['ta_bzj']}</dd>
       			<dt>扶墙:</dt>
-      			<dd>{$context['ta_fuq']}</dd>
+      			<dd class="bg_color_dfe6d0">{$context['ta_fuq']}</dd>
       			<dt>高度:</dt>
-      			<dd>{$context['ta_height']}米</dd>
+      			<dd class="bg_color_dfe6d0">{$context['ta_height']}米</dd>
       		<php>}</php>
       	</dl>
       </div>

@@ -16,13 +16,21 @@ class ProcessModel extends MyModel{
 	}
 	
 	private function _dealData(&$data){
-		$maindev = D('Zdl/Dev')->getProcessedMainDev($data['p_id']);
-		$data['maindev'] = $maindev['dev_zbh'].' ('.$maindev['dev_id'].')';
-		$status = $this->getProcessStatusKV();
-		$data['status'] = $status[$data['p_status']];
-		$data['DOACTION'] = '<a href="javascript:void(0);" onclick="zdl.delProcess('.$data['p_id'].')">'.L('ADMIN_DEL').'</a>';
-		$data['DOACTION'] .='|<a href="'.U('Zdl/Admin/editProcessInfo', array('id'=>$data['p_id'], 'tabHash'=>'editProcessInfo')).'">'.L('ADMIN_ZDL_EDITPROCESSINFO').'</a>';
-		$data['DOACTION'] .='|<a href="'.U('Zdl/Admin/editProcessMainDev', array('id'=>$data['p_id'], 'tabHash'=>'editProcessMainDev')).'">'.L('ADMIN_ZDL_EDITPROCESSDEV').'</a>';
+		if (!empty($data)){
+			$maindev = D('Zdl/Dev')->getProcessedMainDev($data['p_id']);
+			$data['maindev'] = $maindev['dev_zbh'].' ('.$maindev['dev_id'].')';
+			$status = $this->getProcessStatusKV();
+			$data['status'] = $status[$data['p_status']];
+			$data['DOACTION'] = '<a href="javascript:void(0);" onclick="zdl.delProcess('.$data['p_id'].')">'.L('ADMIN_DEL').'</a>';
+			$data['DOACTION'] .='|<a href="'.U('Zdl/Admin/editProcessInfo', array('id'=>$data['p_id'], 'tabHash'=>'editProcessInfo')).'">'.L('ADMIN_ZDL_EDITPROCESSINFO').'</a>';
+			$data['DOACTION'] .='|<a href="'.U('Zdl/Admin/editProcessMainDev', array('id'=>$data['p_id'], 'tabHash'=>'editProcessMainDev')).'">'.L('ADMIN_ZDL_EDITPROCESSDEV').'</a>';
+		}
+	}
+	
+	public function getProcessById($pid){
+		$process = $this->find($pid);
+		$this->_dealData($process);
+		return $process;
 	}
 	
 	public function getProcessStatusKV(){

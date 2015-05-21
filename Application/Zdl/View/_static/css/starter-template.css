@@ -21,12 +21,17 @@ body {
 	color:#ccc;
 }
 
+.bg_color_dfe6d0{
+	background-color:#DFE6D0;
+}
+
 dl#process_info dt{
 	font-size:85%;
-	color:#ccc;
+	color:#575151;
 	margin-top:5px;
 }
 
 dl#process_info dd{
 	margin-top: 5px;
 }
+
